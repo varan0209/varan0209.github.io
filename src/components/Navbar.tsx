@@ -74,8 +74,13 @@ export const Navbar = () => {
           "flex w-full items-center justify-between gap-3 transition-all duration-300",
           isScrolled && "rounded-full border border-border/50 bg-background/72 px-4 py-2 shadow-2xl shadow-primary/10 backdrop-blur-xl"
         )}>
-          <div className="font-display text-xl font-bold gradient-text shrink-0">
-            Varan
+          <div className="flex items-center gap-2.5 shrink-0 cursor-pointer" onClick={() => scrollToSection('#hero')}>
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-primary/40 bg-primary/10 font-display text-sm font-black text-primary shadow-lg shadow-primary/20 backdrop-blur-md">
+              VM
+            </div>
+            <span className="font-display text-lg sm:text-xl font-bold gradient-text">
+              Varan Mamidala
+            </span>
           </div>
 
           <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
