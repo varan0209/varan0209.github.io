@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Taran's Job Scout page for scoring job leads against a saved OPT software, AI, and data profile.">
+    <title>Taran's Job Scout</title>
+    <link rel="icon" href="../assets/portal-scout-mark.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="back-link" href="../index.html">Back to Command Center</a>
+      <div class="brand">
+        <img src="../assets/portal-scout-mark.svg" width="42" height="42" alt="">
+        <div>
+          <p class="eyebrow">Profile-aware job scouting</p>
+          <h1>Taran's Job Scout</h1>
+        </div>
+      </div>
+      <div class="top-actions">
+        <span class="status-pill" id="vaultStatus">Loading scout vault</span>
+        <a class="ghost-button" href="../h1b-intelligence/index.html">H1B Intel</a>
+        <button class="ghost-button" type="button" id="themeToggle">Light mode</button>
+      </div>
+    </header>
+
+    <main class="app-shell">
+      <nav class="quick-rail" aria-label="Connected job-search pages">
+        <a href="../index.html">Command Center</a>
+        <a href="../h1b-intelligence/index.html">H1B Intel</a>
+        <a href="#livePanel">Live Jobs</a>
+        <a href="#profilePanel">Profile</a>
+        <a href="#resumePanel">Resume Match</a>
+        <a href="#searchPanel">Scout Links</a>
+        <a href="#leadPanel">Add Lead</a>
+        <a href="#resultsPanel">Ranked Jobs</a>
+        <a href="#reviewPanel">Review Board</a>
+        <a href="#packetPanel">Apply Packet</a>
+      </nav>
+
+      <section class="hero-panel">
+        <div>
+          <p class="eyebrow">Live personal scout layer</p>
+          <h2>Fresh jobs collected for Taran every 30 minutes.</h2>
+          <p>Scheduled GitHub Actions collect public and direct job data, the page ranks it against your backend, data, cloud, and AI profile, then lets you open or import the strongest matches.</p>
+        </div>
+        <div class="metric-grid">
+          <div><strong id="metricLeads">0</strong><span>leads</span></div>
+          <div><strong id="metricPassed">0</strong><span>above threshold</span></div>
+          <div><strong id="metricReady">0</strong><span>ready to apply</span></div>
+          <div><strong id="metricAvg">0.0</strong><span>avg fit</span></div>
+        </div>
+      </section>
+
+      <section class="panel live-panel" id="livePanel" aria-labelledby="liveHeading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Automatic live feed</p>
+            <h2 id="liveHeading">Live jobs for Taran</h2>
+          </div>
+          <div class="action-row">
+            <span class="status-pill" id="liveFeedStatus">Loading live jobs</span>
+            <button class="primary-button" type="button" id="importTopLiveButton">Import Top Fits</button>
+            <button class="secondary-button" type="button" id="openTopLiveButton">Open Top 10</button>
+            <button class="secondary-button" type="button" id="copyLiveJobsButton">Copy Top Jobs</button>
+            <button class="secondary-button" type="button" id="reloadLiveJobsButton">Reload Feed</button>
+          </div>
+        </div>
+        <div class="live-control-grid">
+          <label class="field" for="liveMinScore">
+            <span>Live fit threshold</span>
+            <select id="liveMinScore">
+              <option value="5">5+ wider net</option>
+              <option value="6" selected>6+ useful</option>
+              <option value="7">7+ strong</option>
+              <option value="8">8+ excellent</option>
+            </select>
+          </label>
+          <label class="field" for="liveSourceFilter">
+            <span>Live source</span>
+            <select id="liveSourceFilter">
+              <option value="all" selected>All live sources</option>
+            </select>
+          </label>
+          <label class="checkbox-line" for="liveOnlyFresh">
+            <input id="liveOnlyFresh" type="checkbox" checked>
+            <span>Prefer last 48 hours</span>
+          </label>
+          <div class="live-stats" id="liveStats">Waiting for the scheduled feed.</div>
+        </div>
+        <div class="live-job-grid" id="liveJobGrid"></div>
+      </section>
+
+      <section class="panel" id="profilePanel" aria-labelledby="profileHeading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Saved profile</p>
+            <h2 id="profileHeading">Taran match profile</h2>
+          </div>
+          <div class="action-row">
+            <button class="secondary-button" type="button" id="saveProfileButton">Save Profile</button>
+            <button class="secondary-button" type="button" id="copySyncButton">Copy Sync Link</button>
+          </div>
+        </div>
+        <div class="form-grid">
+          <label class="field field-wide" for="targetRoles">
+            <span>Target roles</span>
+            <textarea id="targetRoles" rows="3">Software Engineer
+Software Developer
+Backend Software Engineer
+Java Backend Engineer
+Python Backend Engineer
+API Engineer
+Data Engineer
+Data Platform Engineer
+Machine Learning Engineer
+AI/ML Engineer
+AI Engineer
+Cloud Engineer
+Cloud Backend Engineer</textarea>
+          </label>
+          <label class="field field-wide" for="roleVariants">
+            <span>Role variants</span>
+            <textarea id="roleVariants" rows="3">backend engineer, full stack developer, application developer, platform engineer, data pipeline engineer, ETL developer, AI engineer, ML engineer, software engineer new grad, backend developer, Java developer, Python developer</textarea>
+          </label>
+          <label class="field field-wide" for="skillTerms">
+            <span>Skills</span>
+            <textarea id="skillTerms" rows="3">Java, Python, SQL, Spring Boot, FastAPI, Flask, REST APIs, microservices, PostgreSQL, MySQL, Oracle, MongoDB, DynamoDB, AWS, EC2, S3, Lambda, RDS, API Gateway, Docker, CI/CD, GitHub Actions, Kafka, Spark Structured Streaming, ETL pipelines, SQLAlchemy, Pydantic, Alembic, pytest, PyTorch, scikit-learn, Pandas, NumPy, LangChain, RAG, vector databases</textarea>
+          </label>
+          <label class="field" for="locationTerms">
+            <span>Locations</span>
+            <input id="locationTerms" type="text" value="United States, Remote US, New York, Chicago, Buffalo, Dallas, Texas, California, Seattle, Boston, Austin, Raleigh">
+          </label>
+          <label class="field" for="domainTerms">
+            <span>Domains</span>
+            <input id="domainTerms" type="text" value="backend services, data platforms, cloud systems, AI, ML, data engineering, SaaS, fintech, healthcare, developer tools, geospatial data">
+          </label>
+          <label class="field" for="prioritySignals">
+            <span>Priority signals</span>
+            <input id="prioritySignals" type="text" value="Java, Python, SQL, Spring Boot, FastAPI, REST APIs, PostgreSQL, AWS, Docker, CI/CD, Kafka, Spark, ETL, data pipelines, backend services, E-Verify, visa sponsorship">
+          </label>
+          <label class="field" for="levelTerms">
+            <span>Level wording</span>
+            <input id="levelTerms" type="text" value="entry level, junior, new grad, university graduate, 0-2 years, early career">
+          </label>
+          <label class="field" for="authTerms">
+            <span>Authorization wording</span>
+            <input id="authTerms" type="text" value="OPT, STEM OPT, F-1, E-Verify, visa sponsorship, H-1B, work authorization">
+          </label>
+          <label class="field" for="titleExcludes">
+            <span>Title excludes</span>
+            <input id="titleExcludes" type="text" value="senior, staff, principal, lead, manager, director, architect, QA, SDET, test engineer, test automation, test infra, quality assurance, security, security engineer, cybersecurity, product analyst, business analyst, systems analyst, Salesforce, project manager">
+          </label>
+          <label class="field" for="industryExcludes">
+            <span>Industry excludes</span>
+            <input id="industryExcludes" type="text" value="commission only, unpaid, MLM">
+          </label>
+          <label class="field" for="minBaseUsd">
+            <span>Minimum base</span>
+            <input id="minBaseUsd" type="number" min="0" step="5000" value="0">
+          </label>
+          <label class="field" for="workSetting">
+            <span>Work setting</span>
+            <select id="workSetting">
+              <option value="any" selected>Any US setting</option>
+              <option value="remote-hybrid-onsite">Remote + hybrid + onsite</option>
+              <option value="remote">Remote only</option>
+              <option value="hybrid-onsite">Hybrid + onsite</option>
+              <option value="onsite">Onsite only</option>
+            </select>
+          </label>
+          <label class="field" for="minScore">
+            <span>Minimum fit</span>
+            <select id="minScore">
+              <option value="5">5+ wider net</option>
+              <option value="6" selected>6+ useful</option>
+              <option value="7">7+ strong</option>
+              <option value="8">8+ excellent</option>
+            </select>
+          </label>
+          <label class="field" for="freshness">
+            <span>Freshness</span>
+            <select id="freshness">
+              <option value="1h">Latest 1 hour</option>
+              <option value="24h" selected>Latest 24 hours</option>
+              <option value="week">Past week</option>
+              <option value="month">Past month</option>
+            </select>
+          </label>
+          <label class="field field-wide" for="customSources">
+            <span>Custom scout links</span>
+            <textarea id="customSources" rows="3" placeholder="Label | https://example.com/search?q={role}&location={location}"></textarea>
+          </label>
+        </div>
+      </section>
+
+      <section class="panel" id="resumePanel" aria-labelledby="resumeHeading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Resume matching</p>
+            <h2 id="resumeHeading">Resume signal lab</h2>
+          </div>
+          <div class="action-row">
+            <button class="secondary-button" type="button" id="analyzeResumeButton">Analyze Resume</button>
+            <button class="secondary-button" type="button" id="copySignalPackButton">Copy Signal Pack</button>
+            <button class="secondary-button" type="button" id="clearResumeButton">Clear Resume</button>
+          </div>
+        </div>
+        <div class="form-grid">
+          <label class="field full-row" for="resumeText">
+            <span>Resume text</span>
+            <textarea id="resumeText" rows="8" placeholder="Paste your resume text here. This stays in your browser vault and sync export only."></textarea>
+          </label>
+          <label class="field field-wide" for="resumeKeywords">
+            <span>Resume keywords</span>
+            <textarea id="resumeKeywords" rows="3" placeholder="Analyze resume to fill this, or type keywords like Python, SQL, React, AWS, ML, data pipelines"></textarea>
+          </label>
+          <label class="field" for="resumeFileInput">
+            <span>Import text file</span>
+            <input id="resumeFileInput" type="file" accept=".txt,.md,.json,.csv,.pdf">
+          </label>
+          <div class="resume-insights" id="resumeInsights">
+            Add resume text to unlock resume-match scoring.
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="searchPanel" aria-labelledby="searchHeading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Fresh source launcher</p>
+            <h2 id="searchHeading">Scout searches</h2>
+          </div>
+          <div class="action-row">
+            <button class="primary-button" type="button" id="openTopSearchesButton">Open Top 5</button>
+            <button class="secondary-button" type="button" id="openSelectedSearchesButton">Open Selected</button>
+            <button class="secondary-button" type="button" id="copySearchesButton">Copy All</button>
+            <button class="secondary-button" type="button" id="copyPromptButton">Copy Search Prompt</button>
+          </div>
+        </div>
+        <div class="source-grid" id="sourceGrid"></div>
+      </section>
+
+      <section class="panel" id="leadPanel" aria-labelledby="leadHeading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Lead intake</p>
+            <h2 id="leadHeading">Add a job lead to score</h2>
+          </div>
+          <div class="action-row">
+            <button class="secondary-button" type="button" id="clearLeadButton">Clear</button>
+            <button class="primary-button" type="button" id="scoreLeadButton">Score Lead</button>
+          </div>
+        </div>
+        <div class="form-grid">
+          <label class="field" for="leadTitle">
+            <span>Job title</span>
+            <input id="leadTitle" type="text" placeholder="Backend Software Engineer">
+          </label>
+          <label class="field" for="leadCompany">
+            <span>Company</span>
+            <input id="leadCompany" type="text" placeholder="Company name">
+          </label>
+          <label class="field" for="leadLocation">
+            <span>Location</span>
+            <input id="leadLocation" type="text" placeholder="United States / Remote">
+          </label>
+          <label class="field" for="leadWorkSetting">
+            <span>Work setting</span>
+            <select id="leadWorkSetting">
+              <option value="">Unknown</option>
+              <option value="remote">Remote</option>
+              <option value="hybrid">Hybrid</option>
+              <option value="onsite">Onsite</option>
+            </select>
+          </label>
+          <label class="field" for="leadPosted">
+            <span>Posted</span>
+            <select id="leadPosted">
+              <option value="minutes">Minutes ago</option>
+              <option value="today" selected>Today</option>
+              <option value="24h">Within 24h</option>
+              <option value="week">This week</option>
+              <option value="old">Older/unknown</option>
+            </select>
+          </label>
+          <label class="field" for="leadSource">
+            <span>Source</span>
+            <input id="leadSource" type="text" placeholder="LinkedIn, Indeed, company careers">
+          </label>
+          <label class="field" for="leadCompensation">
+            <span>Compensation</span>
+            <input id="leadCompensation" type="text" placeholder="$85,000 - $120,000">
+          </label>
+          <label class="field" for="leadIndustry">
+            <span>Industry</span>
+            <input id="leadIndustry" type="text" placeholder="SaaS, healthcare, fintech">
+          </label>
+          <label class="field" for="leadCompanyWebsite">
+            <span>Company website</span>
+            <input id="leadCompanyWebsite" type="url" placeholder="https://company.com">
+          </label>
+          <label class="field" for="leadStatus">
+            <span>Status</span>
+            <select id="leadStatus">
+              <option value="Unopened" selected>Unopened</option>
+              <option value="Viewed">Viewed</option>
+              <option value="Applied">Applied</option>
+              <option value="Interviewing">Interviewing</option>
+              <option value="Rejected">Rejected</option>
+              <option value="Ignore">Ignore</option>
+              <option value="Expired">Expired</option>
+            </select>
+          </label>
+          <label class="field field-wide" for="leadUrl">
+            <span>Apply URL</span>
+            <input id="leadUrl" type="url" placeholder="https://company.com/jobs/...">
+          </label>
+          <label class="field full-row" for="leadDescription">
+            <span>Description / notes</span>
+            <textarea id="leadDescription" rows="8" placeholder="Paste the job description, requirements, recruiter post, or Google result snippet here."></textarea>
+          </label>
+        </div>
+      </section>
+
+      <section class="panel" id="resultsPanel" aria-labelledby="resultsHeading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Ranked output</p>
+            <h2 id="resultsHeading">Best-fit jobs</h2>
+          </div>
+          <div class="action-row">
+            <button class="primary-button" type="button" id="openApplyBatchButton">Open Apply Batch</button>
+            <button class="secondary-button" type="button" id="copyRankedButton">Copy Ranked Table</button>
+            <button class="secondary-button" type="button" id="importLeadsButton">Import Leads</button>
+            <button class="secondary-button" type="button" id="exportVaultButton">Export Vault</button>
+            <button class="secondary-button" type="button" id="importVaultButton">Import Vault</button>
+          </div>
+        </div>
+        <div class="results-toolbar">
+          <label class="field" for="resultSort">
+            <span>Sort</span>
+            <select id="resultSort">
+              <option value="fit" selected>Fit first</option>
+              <option value="fresh">Fresh first</option>
+              <option value="health">Health first</option>
+              <option value="status">Status first</option>
+              <option value="company">Company A-Z</option>
+            </select>
+          </label>
+          <label class="field" for="statusFilter">
+            <span>Status</span>
+            <select id="statusFilter">
+              <option value="all" selected>All active</option>
+              <option value="Unopened">Unopened</option>
+              <option value="Viewed">Viewed</option>
+              <option value="Applied">Applied</option>
+              <option value="Interviewing">Interviewing</option>
+              <option value="Rejected">Rejected</option>
+              <option value="Ignore">Ignore</option>
+              <option value="Expired">Expired</option>
+            </select>
+          </label>
+          <label class="checkbox-line" for="showOnlyPassed">
+            <input id="showOnlyPassed" type="checkbox" checked>
+            <span>Show only above threshold</span>
+          </label>
+        </div>
+        <div class="results-grid" id="resultsGrid"></div>
+      </section>
+
+      <section class="panel" id="reviewPanel" aria-labelledby="reviewHeading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Scout review</p>
+            <h2 id="reviewHeading">Decision board</h2>
+          </div>
+          <div class="action-row">
+            <button class="secondary-button" type="button" id="copyReviewButton">Copy Review Summary</button>
+          </div>
+        </div>
+        <div class="board-grid" id="reviewBoard"></div>
+      </section>
+
+      <section class="panel" id="packetPanel" aria-labelledby="packetHeading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Application packet</p>
+            <h2 id="packetHeading">Selected job packet</h2>
+          </div>
+          <button class="primary-button" type="button" id="copyPacketButton">Copy Packet</button>
+        </div>
+        <pre id="packetPreview">Select a scored job to build the packet.</pre>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

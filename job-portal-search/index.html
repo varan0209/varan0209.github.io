@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Taran's personal US job search command center - OPT-aware searches for software, AI, data, analytics, and adjacent roles.">
+    <title>Taran's Job Command Center</title>
+    <link rel="icon" href="assets/portal-scout-mark.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles.css">
+    <script src="h1b-intelligence/data.js"></script>
+    <script src="assets/app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#results">Skip to results</a>
+
+    <header class="topbar">
+      <div class="brand">
+        <img src="assets/portal-scout-mark.svg" width="44" height="44" alt="">
+        <div>
+          <p class="eyebrow">Built for Taran - US market only</p>
+          <h1>Taran's Job Command Center</h1>
+        </div>
+      </div>
+      <div class="top-actions">
+        <span class="status-pill">Static, no scraping</span>
+        <a class="ghost-button" href="job-scout/index.html">Job Scout</a>
+        <a class="ghost-button" href="h1b-intelligence/index.html">H1B Intel</a>
+        <button class="ghost-button" type="button" id="themeToggle" aria-label="Toggle color theme">Dark mode</button>
+      </div>
+    </header>
+
+    <main class="app-shell">
+      <nav class="quick-rail" aria-label="Command center views">
+        <a href="#searchHeading">Daily Search</a>
+        <button type="button" id="minuteRadarButton">Minute Radar</button>
+        <button type="button" id="latestOneHourButton">Latest 1h</button>
+        <button type="button" id="fastApplyButton">Fast Apply</button>
+        <button type="button" id="quickApplyButton">Quick Apply</button>
+        <button type="button" id="freshDirectButton">Fresh ATS</button>
+        <a href="job-scout/index.html">Job Scout</a>
+        <a href="#careersHeading">Companies</a>
+        <a href="#sponsorsHeading">H1B Sponsors</a>
+        <a href="h1b-intelligence/index.html">H1B Intel</a>
+        <a href="#vendorHeading">Vendors</a>
+        <a href="#resourcesHeading">Resources</a>
+      </nav>
+
+      <section class="daily-command-panel" aria-labelledby="dailyChecklistHeading">
+        <div class="section-heading compact-heading">
+          <div>
+            <p class="eyebrow">Fast apply routine</p>
+            <h2 id="dailyChecklistHeading">Daily search checklist</h2>
+          </div>
+          <span class="status-pill" id="dailyChecklistStatus">0 of 5 done</span>
+        </div>
+        <div id="dailyChecklist" class="daily-checklist" aria-label="Daily search checklist"></div>
+      </section>
+
+      <section class="search-tool" id="dailySearch" aria-labelledby="searchHeading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Taran's daily search builder</p>
+            <h2 id="searchHeading">Build my US searches</h2>
+          </div>
+          <div class="mini-map" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+
+        <form id="searchForm" class="search-form">
+          <label class="field field-wide" for="jobTitle">
+            <span>Job title</span>
+            <input id="jobTitle" name="job" type="text" autocomplete="off" placeholder="Software engineer, AI engineer, data analyst">
+          </label>
+
+          <label class="field" for="rolePackSelect">
+            <span>Role pack</span>
+            <select id="rolePackSelect" name="rolePack"></select>
+          </label>
+
+          <label class="field" for="profileSelect">
+            <span>Smart profile</span>
+            <select id="profileSelect" name="profile"></select>
+          </label>
+
+          <label class="field" for="searchPresetSelect">
+            <span>Search preset</span>
+            <select id="searchPresetSelect" name="preset"></select>
+          </label>
+
+          <div class="field preset-tools">
+            <span>Preset action</span>
+            <button class="secondary-button" type="button" id="applyPresetButton">Apply Preset</button>
+          </div>
+
+          <label class="field" for="locationSelect">
+            <span>US market</span>
+            <select id="locationSelect" name="location"></select>
+          </label>
+
+          <label class="field" for="timeFilter">
+            <span>Freshness</span>
+            <select id="timeFilter" name="time"></select>
+          </label>
+
+          <label class="field" for="sortSelect">
+            <span>Result order</span>
+            <select id="sortSelect" name="sort">
+              <option value="recommended">Most useful first</option>
+              <option value="latest">Newest first</option>
+              <option value="direct">Direct apply first</option>
+              <option value="coverage">Broad coverage</option>
+            </select>
+          </label>
+
+          <label class="field" for="engineSelect">
+            <span>Search engine</span>
+            <select id="engineSelect" name="engine">
+              <option value="google">Google</option>
+              <option value="duckduckgo">DuckDuckGo</option>
+              <option value="bing">Bing</option>
+              <option value="brave">Brave</option>
+              <option value="startpage">Startpage</option>
+              <option value="yahoo">Yahoo</option>
+              <option value="kagi">Kagi</option>
+              <option value="qwant">Qwant</option>
+            </select>
+          </label>
+
+          <label class="field" for="remoteMode">
+            <span>Work setting</span>
+            <select id="remoteMode" name="remote">
+              <option value="neutral">All work settings</option>
+              <option value="onsite-hybrid">On-site or hybrid</option>
+              <option value="hybrid">Hybrid</option>
+              <option value="onsite">On-site</option>
+              <option value="only">Remote only</option>
+              <option value="exclude">Exclude remote</option>
+            </select>
+          </label>
+
+          <label class="field" for="matchMode">
+            <span>Title match</span>
+            <select id="matchMode" name="match">
+              <option value="smart">Smart related titles</option>
+              <option value="exact">Exact title only</option>
+            </select>
+          </label>
+
+          <label class="field" for="queryStyleSelect">
+            <span>Query style</span>
+            <select id="queryStyleSelect" name="queryStyle">
+              <option value="balanced" selected>Balanced smart</option>
+              <option value="compact">Compact title</option>
+              <option value="broad">Broad Boolean</option>
+              <option value="custom">Custom query</option>
+            </select>
+          </label>
+
+          <label class="field" for="experienceSelect">
+            <span>Experience</span>
+            <select id="experienceSelect" name="experience">
+              <option value="any">Any level</option>
+              <option value="entry">Entry or new grad</option>
+              <option value="mid">Mid level</option>
+              <option value="senior">Senior or lead</option>
+              <option value="manager">Manager plus</option>
+              <option value="internship">Internship</option>
+            </select>
+          </label>
+
+          <label class="field" for="employmentSelect">
+            <span>Employment</span>
+            <select id="employmentSelect" name="employment">
+              <option value="any">Any employment</option>
+              <option value="fulltime">Full-time</option>
+              <option value="contract">Contract</option>
+              <option value="parttime">Part-time</option>
+              <option value="internship">Internship</option>
+            </select>
+          </label>
+
+          <label class="field" for="authorizationSelect">
+            <span>Authorization</span>
+            <select id="authorizationSelect" name="authorization">
+              <option value="none">No auth filter</option>
+              <option value="optBroad">OPT-aware broad</option>
+              <option value="currentAuthorized">US work authorized</option>
+              <option value="sponsorNeeded">Future sponsorship</option>
+              <option value="everify">E-Verify</option>
+              <option value="optStrict">OPT/STEM OPT exact</option>
+            </select>
+          </label>
+
+          <label class="field field-wide" for="includeTerms">
+            <span>Must include</span>
+            <input id="includeTerms" name="include" type="text" autocomplete="off" placeholder="Python, SQL, healthcare, sponsorship">
+          </label>
+
+          <label class="field field-wide" for="customQuery">
+            <span>Custom query</span>
+            <input id="customQuery" name="customQuery" type="text" autocomplete="off" placeholder='Example: "backend engineer" Python AWS "new grad"'>
+          </label>
+
+          <label class="field" for="customSourceName">
+            <span>Custom source label(s)</span>
+            <input id="customSourceName" name="customSourceName" type="text" autocomplete="off" placeholder="My board, Backup board">
+          </label>
+
+          <label class="field field-wide" for="customSourceUrl">
+            <span>Custom source URL(s)</span>
+            <textarea id="customSourceUrl" name="customSourceUrl" rows="3" autocomplete="off" placeholder="Label | https://example.com/jobs?q={role}&location={location}"></textarea>
+            <small>One per line. Tokens: {role}, {query}, {location}, {time}, {source}.</small>
+          </label>
+
+          <div class="field custom-link-tools">
+            <span>Portable link</span>
+            <button class="secondary-button" type="button" id="copyCustomSyncButton">Copy Permanent Sync Link</button>
+          </div>
+
+          <label class="field field-wide" for="excludeTerms">
+            <span>Exclude</span>
+            <input id="excludeTerms" name="exclude" type="text" autocomplete="off" placeholder="unpaid, clearance, commission only">
+          </label>
+
+          <label class="field checkbox-field" for="cautionExcludes">
+            <span>Caution excludes</span>
+            <span class="checkbox-line">
+              <input id="cautionExcludes" name="caution" type="checkbox">
+              <span>Filter scams/clearance only when selected</span>
+            </span>
+          </label>
+
+          <label class="field checkbox-field" for="strictTitle">
+            <span>Strict title</span>
+            <span class="checkbox-line">
+              <input id="strictTitle" name="strict" type="checkbox">
+              <span>Role must appear in the page title (intitle:, operator searches only)</span>
+            </span>
+          </label>
+
+          <div class="action-row">
+            <button class="primary-button" type="submit">Start Search</button>
+            <button class="secondary-button" type="button" id="resetButton">Reset</button>
+          </div>
+        </form>
+
+        <details class="advanced-panel" open>
+          <summary>Source groups</summary>
+          <fieldset id="categoryFilters" class="filter-grid" aria-label="Source groups"></fieldset>
+        </details>
+      </section>
+
+      <section class="workspace">
+        <aside class="side-panel" aria-label="Search summary">
+          <div class="metric-row">
+            <div>
+              <span id="portalCount">0</span>
+              <p>Sources</p>
+            </div>
+            <div>
+              <span id="checkedCount">0</span>
+              <p>Checked</p>
+            </div>
+          </div>
+
+          <div class="panel-block">
+            <h2>Actions</h2>
+            <label class="field" for="openBatchSize">
+              <span>Links per batch</span>
+              <select id="openBatchSize">
+                <option value="5" selected>5 links</option>
+                <option value="10">10 links</option>
+                <option value="15">15 links</option>
+                <option value="20">20 links</option>
+              </select>
+            </label>
+            <button class="secondary-button full-width" type="button" id="openBatchButton" disabled>Open Top 5</button>
+            <button class="secondary-button full-width" type="button" id="openAllButton" disabled>Open All Links</button>
+            <button class="secondary-button full-width" type="button" id="copyAllButton" disabled>Copy All Links</button>
+            <button class="secondary-button full-width" type="button" id="copyCheckedButton" disabled>Copy Checked Links</button>
+            <button class="secondary-button full-width" type="button" id="shareButton" disabled>Copy Share Link</button>
+            <button class="secondary-button full-width" type="button" id="exportSettingsButton">Export Settings</button>
+            <button class="secondary-button full-width" type="button" id="importSettingsButton">Import Settings</button>
+            <button class="secondary-button full-width" type="button" id="openHighValueBatchButton" disabled>Open High-Value Batch</button>
+            <button class="secondary-button full-width" type="button" id="copyApplicationPacketButton" disabled>Copy Application Packet</button>
+          </div>
+
+          <div class="panel-block safety-check">
+            <h2>Safety Check</h2>
+            <ul id="safetyChecklist">
+              <li>No upfront recruiter/vendor fee</li>
+              <li>No fake-check or equipment-payment request</li>
+              <li>No citizenship/clearance-only requirement unless eligible</li>
+              <li>Role is related to my OPT/STEM OPT field</li>
+              <li>Employer/payroll setup can support I-983/E-Verify when needed</li>
+            </ul>
+          </div>
+
+          <div class="panel-block" id="pinnedBlock" hidden>
+            <h2>Pinned Operators</h2>
+            <div id="pinnedOperators" class="tag-list"></div>
+            <button class="secondary-button full-width" type="button" id="copyPinSyncButton">Copy Pin Sync Link</button>
+          </div>
+
+          <div class="panel-block" id="profileBlock">
+            <h2>Profile</h2>
+            <p id="profileDescription" class="helper-text"></p>
+          </div>
+
+          <div class="panel-block" id="relatedBlock" hidden>
+            <h2>Related Titles</h2>
+            <div id="relatedTitles" class="tag-list"></div>
+          </div>
+
+          <div class="panel-block">
+            <h2>Current Query</h2>
+            <pre id="queryPreview">Ready</pre>
+          </div>
+
+          <p id="toast" class="toast" role="status" aria-live="polite"></p>
+        </aside>
+
+        <section class="results-panel" aria-live="polite" aria-labelledby="resultsHeading">
+          <div class="results-heading">
+            <div>
+              <p class="eyebrow">Search links</p>
+              <h2 id="resultsHeading">Results</h2>
+            </div>
+            <p id="resultMeta">Ready</p>
+          </div>
+          <div id="emptyState" class="empty-state">
+            <strong>Ready when you are, Taran.</strong>
+          </div>
+          <div id="results" class="results-list"></div>
+        </section>
+      </section>
+
+      <section class="favorite-companies-panel" aria-labelledby="favoriteCompaniesHeading" id="favoriteCompaniesPanel" hidden>
+        <div class="section-heading compact-heading">
+          <div>
+            <p class="eyebrow">Pinned companies</p>
+            <h2 id="favoriteCompaniesHeading">Favorite company shortcuts</h2>
+          </div>
+          <span class="status-pill" id="favoriteCompanyCount">0 favorites</span>
+        </div>
+        <div id="favoriteCompaniesGrid" class="favorite-companies-grid"></div>
+      </section>
+
+      <section class="careers-tool" aria-labelledby="careersHeading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">My target companies</p>
+            <h2 id="careersHeading">Company and sponsor searches</h2>
+          </div>
+          <span class="status-pill" id="companyCount">Loading companies</span>
+        </div>
+        <div class="careers-grid">
+          <label class="field company-wide" for="companyRole">
+            <span>Company search role</span>
+            <input id="companyRole" type="text" autocomplete="off" placeholder="Entry level software engineer, AI engineer, data analyst">
+          </label>
+          <label class="field" for="companyRolePack">
+            <span>Role family</span>
+            <select id="companyRolePack"></select>
+          </label>
+          <label class="field company-wide" for="companyFilter">
+            <span>Filter companies</span>
+            <input id="companyFilter" type="search" autocomplete="off" placeholder="Type company, category, or tag">
+          </label>
+          <label class="field company-wide" for="companySelect">
+            <span>Company dropdown</span>
+            <select id="companySelect"></select>
+          </label>
+          <label class="field" for="companyTimeFilter">
+            <span>Company freshness</span>
+            <select id="companyTimeFilter">
+              <option value="all">All</option>
+              <option value="5minutes">Minute signals / 5m</option>
+              <option value="10minutes">Minute signals / 10m</option>
+              <option value="15minutes">Minute signals / 15m</option>
+              <option value="30minutes">Minute signals / 30m</option>
+              <option value="45minutes">Minute signals / 45m</option>
+              <option value="1hour">Past Hour</option>
+              <option value="2hours">Past 2 Hours</option>
+              <option value="3hours">Past 3 Hours</option>
+              <option value="4hours">Past 4 Hours</option>
+              <option value="6hours">Past 6 Hours</option>
+              <option value="8hours">Past 8 Hours</option>
+              <option value="12hours">Past 12 Hours</option>
+              <option value="24hours" selected>Past 24 Hours</option>
+              <option value="48hours">Past 48 Hours</option>
+              <option value="72hours">Past 72 Hours</option>
+              <option value="week">Past Week</option>
+              <option value="month">Past Month</option>
+              <option value="year">Past Year</option>
+            </select>
+          </label>
+          <label class="field" for="companyExperienceSelect">
+            <span>Experience</span>
+            <select id="companyExperienceSelect">
+              <option value="entry" selected>Entry or new grad</option>
+              <option value="any">Any level</option>
+              <option value="mid">Mid level</option>
+              <option value="senior">Senior or lead</option>
+              <option value="internship">Internship</option>
+            </select>
+          </label>
+          <label class="field" for="companyLocationSelect">
+            <span>Company location</span>
+            <select id="companyLocationSelect"></select>
+          </label>
+          <label class="field" for="companyRemoteMode">
+            <span>Work setting</span>
+            <select id="companyRemoteMode">
+              <option value="neutral" selected>All work settings</option>
+              <option value="onsite-hybrid">On-site or hybrid</option>
+              <option value="hybrid">Hybrid</option>
+              <option value="onsite">On-site</option>
+              <option value="only">Remote only</option>
+              <option value="exclude">Exclude remote</option>
+            </select>
+          </label>
+          <label class="field" for="companyEmploymentSelect">
+            <span>Employment</span>
+            <select id="companyEmploymentSelect">
+              <option value="any" selected>Any employment</option>
+              <option value="fulltime">Full-time</option>
+              <option value="contract">Contract</option>
+              <option value="parttime">Part-time</option>
+              <option value="internship">Internship</option>
+            </select>
+          </label>
+          <label class="field" for="companyAuthorizationSelect">
+            <span>Authorization</span>
+            <select id="companyAuthorizationSelect">
+              <option value="none" selected>No auth filter</option>
+              <option value="optBroad">OPT-aware broad</option>
+              <option value="currentAuthorized">US work authorized</option>
+              <option value="sponsorNeeded">Future sponsorship</option>
+              <option value="everify">E-Verify</option>
+              <option value="optStrict">OPT/STEM OPT exact</option>
+            </select>
+          </label>
+          <label class="field company-wide" for="companyIncludeTerms">
+            <span>Must include</span>
+            <input id="companyIncludeTerms" type="text" autocomplete="off" placeholder="Python, SQL, sponsorship">
+          </label>
+          <label class="field company-wide" for="companyExcludeTerms">
+            <span>Exclude</span>
+            <input id="companyExcludeTerms" type="text" autocomplete="off" placeholder="unpaid, clearance, senior">
+          </label>
+          <label class="field" for="companyCustomLinkName">
+            <span>Custom company label(s)</span>
+            <input id="companyCustomLinkName" type="text" autocomplete="off" placeholder="Referral search, Alumni search">
+          </label>
+          <label class="field company-wide" for="companyCustomLinkUrl">
+            <span>Custom company URL(s)</span>
+            <textarea id="companyCustomLinkUrl" rows="3" autocomplete="off" placeholder="Label | https://example.com/search?company={company}&q={role}"></textarea>
+            <small>Saved instantly in this browser and protected by the vault. For another system, open the Permanent Sync Link or restore a Vault Backup.</small>
+          </label>
+          <label class="field" for="companySortSelect">
+            <span>Company order</span>
+            <select id="companySortSelect">
+              <option value="latest" selected>Newest first</option>
+              <option value="recommended">Most useful first</option>
+              <option value="sponsor">H1B filings first</option>
+              <option value="favorites">Favorites first</option>
+            </select>
+          </label>
+          <label class="field" for="companyCategorySelect">
+            <span>Category</span>
+            <select id="companyCategorySelect">
+              <option value="all" selected>All categories</option>
+            </select>
+          </label>
+          <label class="field" for="companySponsorTier">
+            <span>Sponsor tier</span>
+            <select id="companySponsorTier">
+              <option value="all" selected>All sponsor tiers</option>
+              <option value="top">Top H1B sponsors</option>
+              <option value="strong">Strong sponsors</option>
+              <option value="moderate">Moderate sponsors</option>
+              <option value="curated">Curated/no filing data</option>
+            </select>
+          </label>
+          <label class="field" for="companyKind">
+            <span>Employer type</span>
+            <select id="companyKind">
+              <option value="all" selected>Direct and vendors</option>
+              <option value="direct">Direct employers</option>
+              <option value="vendor">Staffing/vendors</option>
+            </select>
+          </label>
+        </div>
+        <div class="company-vault-panel" id="companyVaultPanel">
+          <div>
+            <strong>Company link vault</strong>
+            <span id="companyVaultStatus">Loading saved Careers links and pinned companies...</span>
+          </div>
+          <div class="company-vault-actions">
+            <button class="secondary-button" type="button" id="copyCompanyVaultButton">Copy Vault Backup</button>
+            <button class="secondary-button" type="button" id="restoreCompanyVaultButton">Restore Vault</button>
+            <button class="secondary-button" type="button" id="copyCompanyVaultSyncButton">Copy Permanent Sync Link</button>
+          </div>
+        </div>
+        <div class="company-card" id="companyCard"></div>
+      </section>
+
+      <section class="sponsor-panel" aria-labelledby="sponsorsHeading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">My H1B sponsor layer</p>
+            <h2 id="sponsorsHeading">Top sponsor companies for my roles</h2>
+          </div>
+          <span class="status-pill">Workbook-backed</span>
+        </div>
+        <div id="sponsorGrid" class="sponsor-grid"></div>
+      </section>
+
+      <section class="vendor-panel" aria-labelledby="vendorHeading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Vendor outreach</p>
+            <h2 id="vendorHeading">Contact staffing vendors for my roles</h2>
+          </div>
+          <span class="status-pill" id="vendorCount">0 vendors</span>
+        </div>
+        <div class="vendor-controls">
+          <label class="field vendor-wide" for="vendorRole">
+            <span>Vendor role</span>
+            <input id="vendorRole" type="text" autocomplete="off" placeholder="Software engineer, data analyst">
+          </label>
+          <label class="field" for="vendorLocation">
+            <span>Location</span>
+            <select id="vendorLocation"></select>
+          </label>
+          <label class="field" for="vendorFilter">
+            <span>Vendor name</span>
+            <input id="vendorFilter" type="search" autocomplete="off" placeholder="TEKsystems, Mphasis">
+          </label>
+          <label class="field" for="vendorSponsorTier">
+            <span>Sponsor tier</span>
+            <select id="vendorSponsorTier">
+              <option value="all" selected>All sponsor tiers</option>
+              <option value="top">Top H1B sponsors</option>
+              <option value="strong">Strong sponsors</option>
+              <option value="moderate">Moderate sponsors</option>
+              <option value="curated">Curated/no filing data</option>
+            </select>
+          </label>
+          <label class="field" for="vendorCategory">
+            <span>Vendor category</span>
+            <select id="vendorCategory">
+              <option value="all" selected>All vendor categories</option>
+            </select>
+          </label>
+          <label class="field" for="vendorKind">
+            <span>Type</span>
+            <select id="vendorKind">
+              <option value="vendor" selected>Staffing/vendors</option>
+              <option value="direct">Direct employers</option>
+              <option value="all">Direct and vendors</option>
+            </select>
+          </label>
+          <label class="field" for="vendorHasUrl">
+            <span>Contact page</span>
+            <select id="vendorHasUrl">
+              <option value="all" selected>Any page</option>
+              <option value="with-url">Has careers/site URL</option>
+              <option value="missing-url">Needs Google contact search</option>
+            </select>
+          </label>
+          <div class="vendor-actions">
+            <button class="primary-button" type="button" id="copyTopVendorPacketButton">Copy Top Vendor Packet</button>
+            <button class="secondary-button" type="button" id="openTopVendorSearchesButton">Open Top Vendor Searches</button>
+          </div>
+        </div>
+        <div class="vendor-safety">
+          <strong>Vendor safety checks</strong>
+          <span>Do not pay recruiters or vendors for placement. Verify recruiter domain, LinkedIn profile, vendor site, client/job details, payroll employer, and STEM OPT/I-983 readiness before sharing sensitive documents.</span>
+        </div>
+        <div id="vendorGrid" class="vendor-grid"></div>
+      </section>
+
+      <section class="resources-panel" aria-labelledby="resourcesHeading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">My OPT and sponsor research</p>
+            <h2 id="resourcesHeading">My US job-search resources</h2>
+          </div>
+        </div>
+        <div id="resourceGrid" class="resource-grid"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Taran's personal job-search launcher for the US market. It does not scrape, rank, or store job listings.</p>
+      <p>This is job-search tooling, not immigration or legal advice.</p>
+    </footer>
+    <dialog id="detailDialog" class="detail-dialog">
+      <div class="dialog-heading">
+        <div>
+          <p class="eyebrow" id="detailSheet">Workbook row</p>
+          <h2 id="detailTitle">Details</h2>
+        </div>
+        <button class="ghost-button" type="button" id="closeDetailButton">Close</button>
+      </div>
+      <div id="detailBody" class="detail-body"></div>
+    </dialog>
+  </body>
+</html>

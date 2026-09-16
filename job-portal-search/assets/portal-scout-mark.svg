@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="PortalScout mark">
+  <rect width="64" height="64" rx="8" fill="#172033"/>
+  <path d="M13 18h38v28H13z" fill="#f8fbff" opacity=".95"/>
+  <path d="M18 24h18v4H18zm0 9h28v4H18zm0 9h20v4H18z" fill="#172033"/>
+  <circle cx="47" cy="19" r="8" fill="#17a398"/>
+  <path d="m43.5 19 2.4 2.5 4.8-5" fill="none" stroke="#f8fbff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M13 50h38" stroke="#f4b740" stroke-width="5" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Taran's H-1B sponsorship intelligence module for international-student job targeting.">
+    <title>Taran's H-1B Intelligence</title>
+    <link rel="icon" href="../assets/portal-scout-mark.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+    <script src="data.js"></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="back-link" href="../">Back to Command Center</a>
+      <div class="brand">
+        <img src="../assets/portal-scout-mark.svg" width="42" height="42" alt="">
+        <div>
+          <p class="eyebrow">Public static H-1B intelligence</p>
+          <h1>Taran's H-1B Intelligence</h1>
+        </div>
+      </div>
+      <div class="top-actions">
+        <span class="status-pill" id="dataStatus">Loading workbook data</span>
+        <a class="ghost-button" href="../job-scout/index.html">Job Scout</a>
+        <button class="ghost-button" type="button" id="themeToggle">Light mode</button>
+      </div>
+    </header>
+
+    <main class="app-shell">
+      <nav class="quick-rail" aria-label="Connected job-search pages">
+        <a href="../index.html">Command Center</a>
+        <a href="../job-scout/index.html">Job Scout</a>
+        <a href="#pinnedEmployersPanel">Saved</a>
+        <a href="#filtersHeading">Filters</a>
+        <a href="#contentPanel">Workbook</a>
+        <a href="../#careersHeading">Company Search</a>
+        <a href="../#vendorHeading">Vendor Outreach</a>
+        <a href="../#resourcesHeading">OPT Resources</a>
+      </nav>
+
+      <section class="hero-panel">
+        <div>
+          <p class="eyebrow">International student sponsorship targeting</p>
+          <h2>Use the workbook without wasting the data.</h2>
+          <p>Scores are prioritization signals based on historical filing evidence, not sponsorship guarantees.</p>
+        </div>
+        <div class="metric-grid" id="summaryMetrics"></div>
+      </section>
+
+      <section class="controls-panel" aria-labelledby="filtersHeading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Search controls</p>
+            <h2 id="filtersHeading">Filter companies and evidence</h2>
+          </div>
+          <button class="secondary-button" type="button" id="resetFiltersButton">Reset Filters</button>
+        </div>
+        <div class="filters-grid">
+          <label class="field field-wide" for="searchInput">
+            <span>Employer, role, city, title, reason</span>
+            <input id="searchInput" type="search" autocomplete="off" placeholder="Amazon, backend, Texas, applied scientist, entry">
+          </label>
+          <label class="field" for="roleFamilyFilter">
+            <span>Role family</span>
+            <select id="roleFamilyFilter"></select>
+          </label>
+          <label class="field" for="stateFilter">
+            <span>State</span>
+            <select id="stateFilter"></select>
+          </label>
+          <label class="field" for="cityFilter">
+            <span>City</span>
+            <select id="cityFilter"></select>
+          </label>
+          <label class="field" for="priorityFilter">
+            <span>Priority</span>
+            <select id="priorityFilter"></select>
+          </label>
+          <label class="field" for="evidenceFilter">
+            <span>Evidence</span>
+            <select id="evidenceFilter"></select>
+          </label>
+          <label class="field" for="confidenceFilter">
+            <span>Confidence</span>
+            <select id="confidenceFilter"></select>
+          </label>
+          <label class="field" for="modelFilter">
+            <span>Employer model</span>
+            <select id="modelFilter"></select>
+          </label>
+          <label class="field" for="minScoreFilter">
+            <span>Min fit score</span>
+            <input id="minScoreFilter" type="number" min="0" max="100" step="1" placeholder="0">
+          </label>
+          <label class="field" for="minNewFilter">
+            <span>Min new positions</span>
+            <input id="minNewFilter" type="number" min="0" step="1" placeholder="0">
+          </label>
+          <label class="field" for="sponsorTierFilter">
+            <span>Sponsor tier</span>
+            <select id="sponsorTierFilter">
+              <option value="">All tiers</option>
+              <option value="tier1">Tier 1 (very strong)</option>
+              <option value="tier2">Tier 2 (strong)</option>
+              <option value="tier3">Tier 3 (moderate)</option>
+            </select>
+          </label>
+          <label class="field" for="minEntryFilter">
+            <span>Min entry cases</span>
+            <input id="minEntryFilter" type="number" min="0" step="1" placeholder="0">
+          </label>
+          <label class="field" for="minWageFilter">
+            <span>Min wage</span>
+            <input id="minWageFilter" type="number" min="0" step="1" placeholder="0">
+          </label>
+          <label class="field" for="reviewFilter">
+            <span>Review flag</span>
+            <select id="reviewFilter"></select>
+          </label>
+        </div>
+      </section>
+
+      <section class="tabs-panel">
+        <div class="tab-list" id="tabList" role="tablist" aria-label="H-1B intelligence views"></div>
+      </section>
+
+      <section class="action-panel">
+        <div>
+          <p class="eyebrow">Visible data actions</p>
+          <strong id="visibleSummary">Ready</strong>
+        </div>
+        <div class="action-row">
+          <button class="primary-button" type="button" id="openTopFiveButton">Open Top-5</button>
+          <button class="secondary-button" type="button" id="copyTopFiveButton">Copy Top-5</button>
+          <button class="secondary-button" type="button" id="openSelectedButton">Open Selected</button>
+          <button class="secondary-button" type="button" id="copySelectedButton">Copy Selected</button>
+          <button class="secondary-button" type="button" id="copyPacketsButton">Copy Visible Packets</button>
+          <button class="secondary-button" type="button" id="copyCsvButton">Copy Visible CSV</button>
+          <button class="secondary-button" type="button" id="clearCheckedButton">Clear Checks</button>
+          <button class="secondary-button" type="button" id="copySyncButton">Copy Sync Link</button>
+        </div>
+      </section>
+
+      <section class="pinned-panel saved-workbench" id="pinnedEmployersPanel" aria-labelledby="pinnedHeading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Saved sponsor targets</p>
+            <h2 id="pinnedHeading">Pinned and favorite H-1B companies</h2>
+          </div>
+          <div class="action-row">
+            <span class="status-pill" id="pinnedCount">0 saved</span>
+            <button class="secondary-button" type="button" id="openPinnedButton">Open Saved</button>
+            <button class="secondary-button" type="button" id="copyPinnedButton">Copy Saved</button>
+            <button class="secondary-button" type="button" id="clearPinnedButton">Clear Pins</button>
+            <button class="secondary-button" type="button" id="clearFavoritesButton">Clear Favorites</button>
+          </div>
+        </div>
+        <div class="saved-strip" id="savedEmployersStrip" aria-label="Compact saved H-1B companies"></div>
+        <div class="cards-grid" id="pinnedEmployersGrid"></div>
+      </section>
+
+      <section class="content-grid">
+        <div class="content-panel" id="contentPanel" aria-live="polite"></div>
+        <aside class="side-panel">
+          <div class="panel-block">
+            <h2>How to use this</h2>
+            <ol>
+              <li>Start with Apply First for daily applications.</li>
+              <li>Use Entry Level for OPT/new-grad evidence.</li>
+              <li>Use Review for vendor/staffing caution checks.</li>
+              <li>Open the career search, then verify role fit and sponsorship language.</li>
+            </ol>
+          </div>
+          <div class="panel-block">
+            <h2>Score meaning</h2>
+            <p>Candidate Fit Score ranks historical evidence: new employment, certified technical LCAs, entry signals, role breadth, trend, direct-employer signal, full-time share, and wage competitiveness.</p>
+          </div>
+          <div class="panel-block" id="selectedPanel">
+            <h2>Selected company</h2>
+            <p class="muted">Select Details on any card to inspect every workbook column.</p>
+          </div>
+        </aside>
+      </section>
+
+    </main>
+
+    <dialog id="detailDialog" class="detail-dialog">
+      <div class="dialog-heading">
+        <div>
+          <p class="eyebrow" id="detailSheet">Workbook row</p>
+          <h2 id="detailTitle">Details</h2>
+        </div>
+        <button class="ghost-button" type="button" id="closeDetailButton">Close</button>
+      </div>
+      <div id="detailBody" class="detail-body"></div>
+    </dialog>
+
+    <p id="toast" class="toast" role="status" aria-live="polite"></p>
+  </body>
+</html>
