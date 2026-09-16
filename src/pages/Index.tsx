@@ -20,7 +20,7 @@ const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    document.title = 'Taran Mamidala | Software, Data & AI Engineer';
+    document.title = 'Varan Mamidala | Data Analyst & Software Engineer';
     initAnalytics();
     trackEvent({ action: 'page_view', label: 'portfolio_home' });
     void flushResumeAnalytics();
@@ -28,7 +28,7 @@ const Index = () => {
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content',
-        'Portfolio of Taran Mamidala - Software, Data, ML, and AI Engineer based in Buffalo, New York. Focused on backend APIs, data platforms, research-grade ML workflows, cloud-ready systems, and AI products.'
+        'Portfolio of Varan Mamidala - Data Analyst and Software Engineer based in Hyderabad, India. Focused on Python, SQL, Power BI, Tableau, Machine Learning, NLP, and Full Stack Web Development.'
       );
     }
 

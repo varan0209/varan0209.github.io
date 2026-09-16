@@ -78,7 +78,7 @@ export const Writing = () => {
           className="mt-10 text-center"
         >
           <a
-            href="https://medium.com/@taranmamidala"
+            href="https://github.com/varan0209"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-secondary"

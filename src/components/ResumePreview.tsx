@@ -5,133 +5,82 @@ import { publicAsset } from '@/lib/assets';
 import { trackResumeAction } from '@/lib/analytics';
 
 const contactItems = [
-  { text: 'Buffalo, New York', icon: MapPin },
-  { text: 'mtaran014@gmail.com', icon: Mail },
-  { text: '+1 (716) 784-7027', icon: Phone },
-  { text: 'linkedin.com/in/taranmamidala', icon: Linkedin },
-  { text: 'github.com/taran-dev4u', icon: Github },
+  { text: 'Hyderabad, Telangana, India', icon: MapPin },
+  { text: 'varan4636@gmail.com', icon: Mail },
+  { text: '+91 9398626446', icon: Phone },
+  { text: 'linkedin.com/in/varan-mamidala-2b950b261/', icon: Linkedin },
+  { text: 'github.com/varan0209', icon: Github },
 ];
 
 const experience = [
   {
-    role: 'Software / Data Analytics Intern',
-    company: 'Rebecca Everlene Trust Company',
-    period: 'Mar 2026 - Present',
+    role: 'Python Programming Intern',
+    company: 'CodeAlpha',
+    period: 'Nov 2025 – Dec 2025',
     points: [
-      'Support internal tools, structured data workflows, reporting, validation, and process automation.',
-      'Apply Python and related tools to analysis, documentation, and maintainable operational improvements.',
-      'Support analytics, reporting, data cleaning, validation, structuring, and visualization workflows.',
+      'Developed Python automation scripts to streamline routine data-handling processes and reduce manual effort.',
+      'Designed a Stock Portfolio Tracker to analyze investment data and calculate profit/loss for data-driven decisions.',
+      'Collaborated on a rule-based chatbot and interactive game, strengthening problem-solving skills.',
     ],
   },
   {
-    role: 'Research Assistant',
-    company: 'University at Buffalo',
-    period: 'Jan 2025 - Jan 2026',
+    role: 'Web Development Intern',
+    company: 'ColourMoon Technologies',
+    period: 'May 2024 – Jun 2024',
     points: [
-      'Built reproducible Python workflows, analysis tooling, and ML/statistical experiments for academic research.',
-      'Documented methods, assumptions, and results so research workflows could be reviewed, repeated, and extended.',
-      'Created visual explanations and maintained version-controlled code for technical and non-technical audiences.',
+      'Delivered responsive front-end applications for school management, e-commerce, and food delivery systems.',
+      'Implemented user authentication, shopping cart, order tracking, and REST API integration features.',
     ],
   },
   {
-    role: 'Software Engineer - Web & Data Platforms',
-    company: 'iVinGo Solutions Pvt. Ltd.',
-    period: 'Jun 2022 - Jul 2024',
+    role: 'Web Development Intern',
+    company: 'Prodigy Infotech (MSME)',
+    period: 'Feb 2024 – Mar 2024',
     points: [
-      'Delivered web platforms, backend API patterns, database-backed features, reporting workflows, QA, debugging, and documentation.',
-      'Worked across Python, Java, JavaScript, SQL, MySQL, Oracle, PostgreSQL, MongoDB, Docker, GitHub Actions, and Jenkins.',
-      'Supported client projects across education, pharma, real estate, travel, e-commerce, and marketing workflows.',
-    ],
-  },
-  {
-    role: 'Research Intern - Data Science',
-    company: 'NRSC, Indian Space Research Organisation (ISRO)',
-    period: 'Feb 2023 - Sep 2023',
-    points: [
-      'Processed 2M+ satellite records for atmospheric CO2, land-use/land-cover, and climate-zone analysis.',
-      'Built geospatial data workflows, regression modeling, validation, explainability, and reproducible reporting pipelines.',
-      'Contributed to research later published in the International Journal of Remote Sensing, DOI 10.1080/01431161.2025.2562005.',
-    ],
-  },
-  {
-    role: 'Java Developer Training - IGNITE Program',
-    company: 'LTI Mindtree',
-    period: 'IGNITE 2023',
-    points: [
-      'Completed enterprise development training across Java, DBMS, MongoDB, Python, JDBC, Maven, GitHub, TypeScript, Angular, and REST concepts.',
-      'Practiced backend, frontend, database, and version-control fundamentals in a structured engineering environment.',
+      'Delivered a responsive full-stack web application, integrating front-end interfaces with PHP backend logic and MySQL database.',
+      'Contributed across requirements analysis, design, development, and deployment.',
     ],
   },
 ];
 
 const skills = [
   'Python',
-  'Java',
   'SQL',
-  'Bash',
   'JavaScript',
-  'TypeScript',
-  'React',
-  'FastAPI',
-  'Flask',
-  'Spring Boot',
-  'PostgreSQL',
+  'HTML/CSS',
+  'PHP',
   'MySQL',
-  'Oracle',
-  'MongoDB',
-  'ETL/ELT',
-  'Kafka',
-  'Spark',
-  'Pandas',
-  'GeoPandas',
-  'xarray',
-  'NetCDF4',
-  'PyTorch',
+  'Power BI',
+  'Tableau',
+  'MS Excel (Advanced)',
+  'Data Analysis',
+  'Data Cleaning',
+  'Data Visualization',
+  'KPI Analysis',
+  'Window Functions',
+  'Stored Procedures',
+  'NLP',
+  'Hugging Face (BART)',
   'TensorFlow',
-  'Scikit-learn',
-  'SHAP',
-  'Docker',
-  'AWS',
-  'Terraform',
-  'GitHub Actions',
-  'Pytest',
+  '2D/3D CNNs',
+  'SVM',
+  'PCA / SVD',
+  'AWS Cloud',
+  'Git & GitHub',
 ];
 
 const projects = [
-  'Atmospheric CO2 and LULC Modeling Pipeline - NRSC/ISRO research workflow using satellite data, geospatial modeling, SHAP, PostgreSQL, Flask, and Streamlit.',
-  'Real-Time Streaming Data Pipeline - Kafka, Spark Structured Streaming, Python, Parquet, PostgreSQL, FastAPI, and Docker.',
-  'Enterprise RAG Knowledge System - LangChain, OpenAI, vector search, citations, reranking, FastAPI, and PostgreSQL.',
-  'Pintos Kernel Systems Lab - C, operating systems, scheduling, system calls, process control, synchronization, and GDB.',
-  'Transformer-GAN Image Restoration - PyTorch, transformers, GANs, CelebA, OpenCV, perceptual objectives, and model evaluation.',
+  'Adventure Works Sales & Profit Analysis - SQL, Power BI, Tableau, Excel ($29.4M sales, 60K orders evaluated).',
+  'Text Summarization Model - NLP, Python, Hugging Face BART-large-cnn multi-stage chunking & summarization.',
+  'Zomato Sales & Rating Analysis - SQL, Tableau (9,551 restaurants across 15 countries & 141 cities).',
+  'Hyperspectral Image Classification - Deep Learning, TensorFlow, 2D/3D CNNs, SVM, PCA/SVD dimensionality reduction.',
+  'Blinkit Sales Performance Dashboard - Power BI, Excel ($1.20M sales, 5-page interactive dashboard & decomposition tree).',
+  'Online Library Management System - Full-stack PHP, MySQL, JavaScript CRUD web application.',
 ];
 
 export const ResumePreview = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
-  const resumeUrl = publicAsset('Taran_Mamidala_Resume.pdf');
-
-  const handleResumeDownload = (event: MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault();
-    let downloadStarted = false;
-
-    const startDownload = () => {
-      if (downloadStarted) return;
-      downloadStarted = true;
-
-      const link = document.createElement('a');
-      link.href = resumeUrl;
-      link.download = 'Taran_Mamidala_Resume.pdf';
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-    };
-
-    const fallback = window.setTimeout(startDownload, 1200);
-    trackResumeAction('resume_download', 'resume_section', () => {
-      window.clearTimeout(fallback);
-      startDownload();
-    });
-  };
 
   return (
     <section id="resume" className="py-24 relative" ref={ref}>
@@ -146,31 +95,28 @@ export const ResumePreview = () => {
             <span className="text-sm text-primary font-medium">Resume</span>
           </div>
           <h2 className="font-display text-4xl sm:text-5xl font-bold mb-6">
-            <span className="gradient-text">Resume</span>
+            <span className="gradient-text">Resume Highlights</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Review the highlights below, open the full resume in your browser, or download a PDF copy.
+            Review key credentials below, connect via LinkedIn / GitHub, or get in touch directly.
           </p>
 
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <a
-              href={resumeUrl}
+              href="https://github.com/varan0209"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary inline-flex items-center justify-center gap-2"
-              onClick={() => trackResumeAction('resume_view', 'resume_section')}
             >
               <ExternalLink size={18} />
-              View Resume
+              View GitHub Profile
             </a>
             <a
-              href={resumeUrl}
-              download="Taran_Mamidala_Resume.pdf"
+              href="mailto:varan4636@gmail.com"
               className="btn-secondary inline-flex items-center justify-center gap-2"
-              onClick={handleResumeDownload}
             >
-              <Download size={18} />
-              Download PDF
+              <Mail size={18} />
+              Contact Varan
             </a>
           </div>
         </motion.div>
@@ -186,14 +132,13 @@ export const ResumePreview = () => {
               <div className="mb-7">
                 <div className="mb-3 flex items-center gap-3 text-primary">
                   <ScrollText size={24} />
-                  <span className="text-sm font-semibold uppercase tracking-wide">Taran Mamidala</span>
+                  <span className="text-sm font-semibold uppercase tracking-wide">Varan Mamidala</span>
                 </div>
                 <h3 className="font-display text-3xl font-bold leading-tight">
-                  Software, Data, ML, and AI Engineer
+                  Data Analyst & Software Engineer
                 </h3>
                 <p className="mt-4 leading-relaxed text-muted-foreground">
-                  Software, data, and AI engineer with experience across backend systems, data platforms, ML workflows,
-                  geospatial research, and production-facing software.
+                  B.Tech Computer Science graduate with hands-on experience in Python, SQL, Power BI, Tableau, Excel, machine learning, and full-stack web development.
                 </p>
               </div>
 
@@ -213,14 +158,11 @@ export const ResumePreview = () => {
                 </div>
                 <div className="space-y-4 text-sm text-muted-foreground">
                   <p>
-                    <span className="font-semibold text-foreground">M.S. Computer Science and Engineering, AI/ML</span>
+                    <span className="font-semibold text-foreground">B.Tech in Computer Science and Engineering</span>
                     <br />
-                    University at Buffalo, SUNY - Aug 2024 to Jan 2026 - GPA 3.8/4.0
-                  </p>
-                  <p>
-                    <span className="font-semibold text-foreground">B.Tech. Computer Science and Engineering</span>
+                    GITAM (Gandhi Institute of Technology and Management) - 2021 to 2025
                     <br />
-                    Vellore Institute of Technology - Jun 2019 to May 2023
+                    Visakhapatnam, Andhra Pradesh, India
                   </p>
                 </div>
               </div>

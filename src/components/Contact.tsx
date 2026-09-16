@@ -23,7 +23,7 @@ export const Contact = () => {
     const message = String(formData.get('message') || '');
     const body = encodeURIComponent(`${message}\n\nFrom: ${name}\nEmail: ${email}`);
 
-    window.location.href = `mailto:mtaran014@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+    window.location.href = `mailto:varan4636@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
     toast({
       title: 'Email draft opened',
       description: 'Your message is ready to send through your email app.',
@@ -36,45 +36,45 @@ export const Contact = () => {
     {
       icon: Mail,
       title: 'Email',
-      value: 'mtaran014@gmail.com',
-      href: 'mailto:mtaran014@gmail.com',
+      value: 'varan4636@gmail.com',
+      href: 'mailto:varan4636@gmail.com',
       description: 'Best way to reach me for opportunities'
     },
     {
       icon: Linkedin,
       title: 'LinkedIn',
-      value: 'linkedin.com/in/taranmamidala',
-      href: 'https://www.linkedin.com/in/taranmamidala/',
+      value: 'linkedin.com/in/varan-mamidala',
+      href: 'https://www.linkedin.com/in/varan-mamidala-2b950b261/',
       description: 'Let\'s connect professionally'
     },
     {
       icon: Github,
       title: 'GitHub',
-      value: 'github.com/taran-dev4u',
-      href: 'https://github.com/taran-dev4u',
+      value: 'github.com/varan0209',
+      href: 'https://github.com/varan0209',
       description: 'Explore my code and projects'
     },
     {
       icon: MapPin,
       title: 'Location',
-      value: 'Buffalo, New York',
+      value: 'Hyderabad, Telangana, India',
       href: null,
-      description: 'Open to remote, hybrid, on-site, and relocation opportunities'
+      description: 'Open to full-time Data Analyst and Software Engineer opportunities'
     },
     {
       icon: Phone,
       title: 'Phone',
-      value: '+1 (716) 784-7027',
-      href: 'tel:+17167847027',
-      description: 'Available for recruiter calls and interviews'
+      value: '+91 9398626446',
+      href: 'tel:+919398626446',
+      description: 'Available for recruiter calls and technical discussions'
     }
   ];
 
   const reasons = [
-    'Full-time software, backend, data, ML, or AI engineering conversations',
-    'Research and product teams building data platforms, models, APIs, or AI tools',
-    'Interview conversations, referrals, and technical screenings',
-    'Opportunities involving analytics, automation, cloud systems, and intelligent products',
+    'Full-time Data Analyst and Software Engineer opportunities',
+    'SQL analytics, Power BI dashboards, and business intelligence projects',
+    'Python automation, NLP summarization, and ML modeling projects',
+    'Full-stack web application development and API integration roles',
   ];
 
   return (
@@ -232,7 +232,7 @@ export const Contact = () => {
               </button>
 
               <p className="text-xs text-muted-foreground text-center">
-                Or email me directly at <span className="text-primary">mtaran014@gmail.com</span>
+                Or email me directly at <span className="text-primary">varan4636@gmail.com</span>
               </p>
             </form>
           </motion.div>

@@ -31,123 +31,78 @@ type CredentialItem = {
 
 const fallbackCredentialItems: CredentialItem[] = [
   {
-    category: 'Hackathons',
-    title: 'GFG VIT-AP Hacktoberfest 2023',
-    issuer_or_event: 'GFG VIT-AP Student Chapter',
-    date: 'Oct 2023',
+    category: 'Certification',
+    title: 'Cisco Data Analytics Essentials',
+    issuer_or_event: 'Cisco Networking Academy',
+    date: '2024',
     description:
-      'Certificate of participation for GFG VIT-AP Hacktoberfest 2023, organized by the GFG VIT-AP Student Chapter.',
-    image: 'credentials/gfgvitap-hacktoberfest-2023.jpg',
+      'Comprehensive training covering data analytics lifecycle, data visualization techniques, and statistical decision-making using industry tools.',
     link: '#contact',
-    tags: ['Hackathon', 'GFG', 'Open Source'],
+    tags: ['Certification', 'Data Analytics', 'Visualization'],
     priority: 1,
   },
   {
     category: 'Certification',
-    title: 'Basics of Arduino Programming',
-    issuer_or_event: 'VIT-AP University',
-    date: '2022',
+    title: 'CCBP 4.0 Industry Ready Workshops',
+    issuer_or_event: 'NxtWave / CCBP 4.0',
+    date: '2023',
     description:
-      'Certificate of completion for a 30-hour value-added course on Basics of Arduino Programming organized by the Department of Computer Science and Engineering.',
-    image: 'credentials/basics-of-arduino-programming.jpg',
+      'Specialized industry readiness program focused on Python scripting, relational database design with SQL, and modern web application development.',
     link: '#contact',
-    tags: ['Certification', 'Arduino', 'Embedded Systems'],
+    tags: ['Certification', 'Python', 'SQL', 'Web Dev'],
     priority: 2,
   },
   {
-    category: 'Research',
-    title: 'Remote Sensing and Climate Data',
-    issuer_or_event: 'NRSC / ISRO research work',
-    date: '',
+    category: 'Certification',
+    title: 'Face Prep C-Language Certification',
+    issuer_or_event: 'Face Prep',
+    date: '2022',
     description:
-      'Research work connects atmospheric CO2, satellite datasets, land-use behavior, climate zones, regression modeling, and explainable analysis.',
-    image: 'research/research_paper_.jpg',
+      'Foundational certification covering procedural programming in C, memory management, array manipulation, and core algorithmic problem solving.',
     link: '#contact',
-    tags: ['Research', 'Climate Data'],
+    tags: ['Certification', 'C-Language', 'Data Structures'],
     priority: 3,
   },
 ];
 
 const credentialIcons = {
-  Hackathons: Trophy,
   Certification: BadgeCheck,
   Certifications: BadgeCheck,
   Seminar: BadgeCheck,
   Seminars: BadgeCheck,
+  Hackathons: Trophy,
   Research: RadioTower,
 };
 
-const credentialFilters = ['All', 'Hackathons', 'Certification'];
+const credentialFilters = ['All', 'Certification'];
 
 const leadershipItems = [
   {
-    title: 'Bioscope Club',
-    role: 'Technical Lead, VIT-AP',
-    logo: 'clubs/vit_ap_bioscope_club_logo.jpg',
-    description:
-      'Supported the technical side of a movie-making and screening club that organized film festivals, student productions, and creative events. My work focused on website support, coordination with the creative team, and making event information easier for students to access.',
-    details: [
-      'Helped the club present events, screenings, and student work through web and technical support.',
-      'Collaborated with creative teams where communication mattered as much as implementation.',
-      'Built confidence working across design, content, logistics, and engineering responsibilities.',
-    ],
-    icon: Clapperboard,
-    href: '#contact',
-  },
-  {
-    title: 'Be A Nerd Club',
-    role: 'Technical Team Member',
-    logo: 'clubs/Be_A_Nerd.jpg',
-    description:
-      'Contributed to a curiosity-driven student community focused on practical learning, technical discussions, and hands-on exploration outside regular coursework.',
-    details: [
-      'Participated in technical planning and student-focused learning activities.',
-      'Helped create an environment where students could ask questions and learn by building.',
-      'Practiced explaining technical ideas clearly to peers with different levels of experience.',
-    ],
-    icon: Lightbulb,
-    href: '#contact',
-  },
-  {
-    title: 'Q-hub Club',
-    role: 'Technical Team Member',
-    logo: 'clubs/vit_qhub_club.jpg',
-    description:
-      'Worked with a knowledge-sharing student community and supported technical initiatives, website work, and collaborative activities connected to learning and problem solving.',
-    details: [
-      'Supported web-facing club work and technical coordination.',
-      'Collaborated with peers on student events and community initiatives.',
-      'Built stronger teamwork habits around planning, follow-up, and shared ownership.',
-    ],
-    icon: Code2,
-    href: '#contact',
-  },
-  {
-    title: 'Academic & Industrial Nano Society',
-    role: 'Team Member',
-    logo: 'clubs/Academic%20%26%20Industrial%20Nano%20Society.jpg',
-    description:
-      'Participated in an interdisciplinary student society that connected engineering, science, and industry-style learning through technical events and student activities.',
-    details: [
-      'Engaged with interdisciplinary technical topics beyond core computer science.',
-      'Supported event participation, peer learning, and student collaboration.',
-      'Developed comfort working with mixed technical audiences and broader engineering themes.',
-    ],
-    icon: FlaskConical,
-    href: '#contact',
-  },
-  {
-    title: 'Academic Leadership',
-    role: 'TA, Class Representative, Student Vice-Representative',
+    title: 'GITAM CSE Technical Collaboration & Peer Mentorship',
+    role: 'Student Lead & Project Coordinator, GITAM',
     logo: '',
     description:
-      'Took on academic support and representation responsibilities that required communication, mentoring, issue tracking, and coordination between students and faculty.',
+      'Led group projects and peer study sessions in B.Tech Computer Science at GITAM. Focused on SQL database design, Python algorithm optimization, and Power BI dashboard development.',
     details: [
-      'Helped peers navigate coursework, expectations, and classroom communication.',
-      'Represented student concerns and supported smoother coordination with faculty.',
-      'Practiced accountable leadership through follow-ups, organization, and clear communication.',
+      'Mentored junior students in core programming concepts (Python, C, SQL).',
+      'Coordinated team roles and Git workflows for capstone and semester software projects.',
+      'Fostered a collaborative problem-solving culture for academic & project deadlines.',
     ],
     icon: GraduationCap,
+    href: '#contact',
+  },
+  {
+    title: 'Data & Technical Event Coordinator',
+    role: 'Technical Team Member, GITAM',
+    logo: '',
+    description:
+      'Participated in organizing technical workshops, coding challenges, and data analysis presentations at GITAM CSE department.',
+    details: [
+      'Supported technical setup and logistics for hands-on coding workshops.',
+      'Helped peers troubleshoot environment setup issues for Python, MySQL, and BI tools.',
+      'Presented project walkthroughs and interactive dashboards to faculty and peers.',
+    ],
+    icon: Code2,
     href: '#contact',
   },
 ];

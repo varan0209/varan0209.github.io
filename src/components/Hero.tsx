@@ -21,7 +21,7 @@ export const Hero = () => {
             <div className="inline-block max-w-full px-4 py-2 rounded-full bg-secondary/50 border border-border/50 mb-4">
               <span className="inline-flex flex-wrap items-center justify-center gap-2 text-center text-sm text-muted-foreground">
                 <Sparkles size={15} className="text-primary shrink-0" />
-                Software Engineer | Data & AI
+                Data Analyst | Software Engineer
               </span>
             </div>
 
@@ -35,29 +35,28 @@ export const Hero = () => {
 
             <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold mb-4 leading-tight text-balance">
               <span className="wave-hand" aria-hidden="true">{'\u{1F44B}'}</span> Hello, I'm <br className="sm:hidden" />
-              <span className="gradient-text">Taran Mamidala</span>
+              <span className="gradient-text">Varan Mamidala</span>
             </h1>
 
             <div className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-6 max-w-full lg:max-w-2xl">
               <TypeWriter
                 words={[
-                  'Machine Learning Engineer',
+                  'Data Analyst',
                   'Software Engineer',
-                  'Data Engineer',
-                  'Full Stack Developer',
-                  'AI Engineer',
+                  'Python & SQL Developer',
+                  'Power BI Specialist',
+                  'Full Stack Web Developer',
                 ]}
               />
             </div>
 
             <p className="mx-auto max-w-[18.5rem] text-base sm:max-w-full sm:text-lg text-muted-foreground mb-8 lg:mx-0 lg:max-w-xl">
-              I build backend systems, data platforms, ML workflows, and AI products with a practical engineering mindset.
-              My work connects production APIs, research-grade data pipelines, geospatial climate modeling, full-stack tools,
-              and cloud-ready architecture.
+              Computer Science graduate specializing in data analysis, visualization, Python automation, SQL querying,
+              Power BI dashboards, and full-stack web applications to transform complex data into practical business insights.
             </p>
 
             <div className="mx-auto flex max-w-[18.5rem] flex-wrap justify-center gap-3 mb-6 sm:max-w-[20rem] lg:mx-0 lg:max-w-none lg:justify-start">
-              {['Backend APIs', 'Data Pipelines', 'RAG', 'MLOps', 'Research AI'].map((item) => (
+              {['Data Analytics', 'SQL & Power BI', 'Python Automation', 'Full Stack Web Dev', 'AI & NLP'].map((item) => (
                 <span key={item} className="tech-chip text-xs sm:text-sm">
                   <Sparkles size={13} />
                   {item}
@@ -68,11 +67,11 @@ export const Hero = () => {
             <div className="mx-auto flex max-w-[18.5rem] flex-wrap justify-center gap-4 mb-8 text-xs sm:max-w-[20rem] sm:text-sm text-muted-foreground lg:mx-0 lg:max-w-none lg:justify-start">
               <div className="flex items-center gap-2">
                 <MapPin size={16} className="text-primary" />
-                <span>Buffalo, NY - open to relocation</span>
+                <span>Hyderabad, Telangana, India</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail size={16} className="text-primary" />
-                <span>mtaran014@gmail.com</span>
+                <span>varan4636@gmail.com</span>
               </div>
             </div>
 
@@ -86,9 +85,7 @@ export const Hero = () => {
 
               <Button asChild variant="outline" size="lg" className="btn-secondary">
                 <a
-                  href={publicAsset('Taran_Mamidala_Resume.pdf')}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#resume"
                   onClick={() => trackResumeAction('resume_view', 'hero')}
                 >
                   Resume
@@ -98,13 +95,13 @@ export const Hero = () => {
             </div>
 
             <div className="flex justify-center lg:justify-start gap-4 mt-8">
-              <a href="https://github.com/taran-dev4u" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" className="social-icon h-12 w-12">
+              <a href="https://github.com/varan0209" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" className="social-icon h-12 w-12">
                 <Github size={20} />
               </a>
-              <a href="https://www.linkedin.com/in/taranmamidala" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" className="social-icon h-12 w-12">
+              <a href="https://www.linkedin.com/in/varan-mamidala-2b950b261/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" className="social-icon h-12 w-12">
                 <Linkedin size={20} />
               </a>
-              <a href="mailto:mtaran014@gmail.com" aria-label="Email Taran" className="social-icon h-12 w-12">
+              <a href="mailto:varan4636@gmail.com" aria-label="Email Varan" className="social-icon h-12 w-12">
                 <Mail size={20} />
               </a>
             </div>
@@ -122,7 +119,7 @@ export const Hero = () => {
               <div className="absolute inset-[-28px] rounded-[2.75rem] border border-accent/15 animate-drift" />
 
               <div className="profile-frame relative w-[15.5rem] h-[20rem] sm:w-[22rem] sm:h-[28rem] rounded-[2rem] overflow-hidden border border-primary/30 shadow-2xl">
-                <img src={profileImage} alt="Taran Mamidala" className="w-full h-full object-cover object-[50%_24%]" />
+                <img src={profileImage} alt="Varan Mamidala" className="w-full h-full object-cover object-[50%_24%]" />
               </div>
 
               <div className="absolute -top-4 -right-4 w-16 h-16 bg-primary/10 rounded-2xl border border-primary/20 backdrop-blur-sm flex items-center justify-center">

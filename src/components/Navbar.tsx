@@ -75,7 +75,7 @@ export const Navbar = () => {
           isScrolled && "rounded-full border border-border/50 bg-background/72 px-4 py-2 shadow-2xl shadow-primary/10 backdrop-blur-xl"
         )}>
           <div className="font-display text-xl font-bold gradient-text shrink-0">
-            Taran
+            Varan
           </div>
 
           <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">

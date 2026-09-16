@@ -99,11 +99,34 @@ const getCourseIcon = (course: string) => {
   return BookOpenCheck;
 };
 
+const certifications = [
+  { name: 'Data Analytics Certification (QID/26-27/1229)', issuer: 'Quality Thought', icon: BarChart3 },
+  { name: 'Data Analytics Essentials', issuer: 'Cisco Networking Academy', icon: BarChart3 },
+  { name: 'Data Analytics Mega Workshop', issuer: 'CCBP 4.0', icon: BarChart3 },
+  { name: 'Generative AI Mega Workshop', issuer: 'CCBP 4.0', icon: BrainCircuit },
+  { name: 'AWS Mega Workshop', issuer: 'CCBP 4.0', icon: Cpu },
+  { name: 'Full Stack Web Development Course', issuer: 'CCBP 4.0', icon: Code2 },
+  { name: 'C-Language Training', issuer: 'Face Prep', icon: Code2 },
+];
+
+const gitamCourses = [
+  'Python Programming',
+  'SQL & Database Management Systems',
+  'Data Structures & Algorithms',
+  'Data Analysis & Visualization',
+  'Power BI & Tableau Analytics',
+  'Machine Learning & Deep Learning',
+  'Natural Language Processing',
+  'Full-Stack Web Development (PHP/MySQL/JS)',
+  'Cloud Fundamentals (AWS)',
+  'Software Engineering & Agile',
+  'Operating Systems',
+  'Computer Networks',
+];
+
 export const Education = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
-  const [showAllUndergrad, setShowAllUndergrad] = useState(false);
-  const displayedUndergrad = showAllUndergrad ? undergraduateCourses : undergraduateCourses.slice(0, 16);
 
   return (
     <section id="education" className="py-24 relative bg-secondary/20" ref={ref}>
@@ -115,17 +138,18 @@ export const Education = () => {
           className="max-w-3xl mx-auto text-center mb-16"
         >
           <div className="inline-block glass-card px-4 py-2 mb-4">
-            <span className="text-sm text-primary font-medium">Education</span>
+            <span className="text-sm text-primary font-medium">Education & Certifications</span>
           </div>
           <h2 className="font-display text-4xl sm:text-5xl font-bold mb-6">
-            Education & <span className="gradient-text">Coursework</span>
+            Education & <span className="gradient-text">Certifications</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Graduate study in computer science and engineering, supported by a broad undergraduate foundation in software, data, algorithms, and analytics.
+            B.Tech in Computer Science and Engineering from GITAM University, supported by professional certifications in Data Analytics, Generative AI, Cloud, and Web Development.
           </p>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          {/* Degree Card */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -133,59 +157,54 @@ export const Education = () => {
             className="glass-card p-8 hover:border-primary/30 transition-all duration-300 group"
           >
             <div className="flex items-start gap-4 mb-6">
-              <div className="education-logo-frame h-24 w-24" aria-label="University at Buffalo mark">
-                <img src={publicAsset('education/University_at_Buffalo_logo.svg.png')} alt="University at Buffalo logo" className="max-h-full max-w-full object-contain" />
+              <div className="education-logo-frame h-20 w-20 flex items-center justify-center rounded-2xl bg-primary/10 border border-primary/20 text-primary">
+                <GraduationCap size={36} />
               </div>
 
               <div className="flex-1">
                 <h3 className="font-display text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                  M.S. in Computer Science and Engineering
+                  Bachelor of Technology (B.Tech)
                 </h3>
-                <h4 className="text-lg font-semibold text-primary mb-3">
-                  University at Buffalo, SUNY
+                <h4 className="text-lg font-semibold text-primary mb-1">
+                  Computer Science and Engineering
                 </h4>
+                <p className="text-sm text-foreground/80 font-medium mb-3">
+                  Gandhi Institute of Technology and Management (GITAM)
+                </p>
 
                 <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
                   <div className="flex items-center gap-2">
                     <Calendar size={16} />
-                  <span>Aug 2024 - Jan 2026</span>
+                    <span>2021 – 2025</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <MapPin size={16} />
-                    <span>Buffalo, New York</span>
+                    <span>Visakhapatnam, Andhra Pradesh, India</span>
                   </div>
                 </div>
               </div>
             </div>
 
             <p className="text-muted-foreground mb-6 leading-relaxed">
-              Coursework covers algorithms, systems, security, databases, ML, deep learning, computer vision,
-              data-intensive computing, statistical mining, and web analytics. Current resume evidence lists a 3.8/4.0 GPA.
+              Comprehensive undergraduate computer science curriculum covering programming, database systems, software engineering, machine learning, and data analytics.
             </p>
 
-            <div className="space-y-5">
-              {graduateTerms.map((term) => (
-                <div key={term.term}>
-                  <h5 className="font-semibold mb-3 text-sm uppercase tracking-wide text-foreground flex items-center gap-2">
-                    <GraduationCap size={16} className="text-primary" />
-                    {term.term}
-                  </h5>
-                  <div className="flex flex-wrap gap-2">
-                    {term.courses.map((course) => (
-                      <span key={course} className="tech-chip">
-                        {(() => {
-                          const CourseIcon = getCourseIcon(course);
-                          return <CourseIcon size={16} />;
-                        })()}
-                        {course}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
+            <div className="space-y-4">
+              <h5 className="font-semibold text-sm uppercase tracking-wide text-foreground flex items-center gap-2">
+                <BookOpenCheck size={16} className="text-primary" />
+                Key Coursework & Skills
+              </h5>
+              <div className="flex flex-wrap gap-2">
+                {gitamCourses.map((course) => (
+                  <span key={course} className="tech-chip text-xs">
+                    {course}
+                  </span>
+                ))}
+              </div>
             </div>
           </motion.div>
 
+          {/* Certifications Card */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -193,52 +212,35 @@ export const Education = () => {
             className="glass-card p-8 hover:border-primary/30 transition-all duration-300 group"
           >
             <div className="flex items-start gap-4 mb-6">
-              <div className="education-logo-frame h-24 w-24" aria-label="Vellore Institute of Technology mark">
-                <img src={publicAsset('education/VIT%20logo.png')} alt="VIT logo" className="max-h-full max-w-full object-contain" />
+              <div className="education-logo-frame h-20 w-20 flex items-center justify-center rounded-2xl bg-primary/10 border border-primary/20 text-primary">
+                <BookOpenCheck size={36} />
               </div>
               <div className="flex-1">
                 <h3 className="font-display text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                  B.Tech. in Computer Science and Engineering
+                  Certifications & Workshops
                 </h3>
-                <h4 className="text-lg font-semibold text-primary mb-3">
-                  Vellore Institute of Technology
-                </h4>
-
-                <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
-                  <div className="flex items-center gap-2">
-                    <MapPin size={16} />
-                    <span>India</span>
-                  </div>
-                </div>
+                <p className="text-sm text-muted-foreground">
+                  Industry workshops and practical skill credentials
+                </p>
               </div>
             </div>
 
-            <p className="text-muted-foreground mb-6 leading-relaxed">
-              Undergraduate foundation in software engineering, databases, algorithms, analytics, systems,
-              and applied computer science.
-            </p>
-
-            <div className="flex flex-wrap gap-2">
-              {displayedUndergrad.map((course) => (
-                <span key={course} className="tech-chip">
-                  {(() => {
-                    const CourseIcon = getCourseIcon(course);
-                    return <CourseIcon size={16} />;
-                  })()}
-                  {course}
-                </span>
+            <div className="space-y-4">
+              {certifications.map((cert) => (
+                <div
+                  key={cert.name}
+                  className="flex items-center gap-4 rounded-xl border border-border/40 bg-background/40 p-4 transition-colors hover:border-primary/40"
+                >
+                  <div className="h-10 w-10 shrink-0 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                    <cert.icon size={20} />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-sm text-foreground">{cert.name}</h4>
+                    <p className="text-xs text-primary font-medium">{cert.issuer}</p>
+                  </div>
+                </div>
               ))}
             </div>
-
-            {undergraduateCourses.length > 16 && (
-              <button
-                onClick={() => setShowAllUndergrad((current) => !current)}
-                className="btn-secondary mt-6 inline-flex items-center gap-2"
-              >
-                {showAllUndergrad ? 'Show Less Coursework' : 'Show More Coursework'}
-                <ChevronRight size={18} className={`transition-transform ${showAllUndergrad ? 'rotate-90' : ''}`} />
-              </button>
-            )}
           </motion.div>
         </div>
       </div>

@@ -1,9 +1,9 @@
 import { Github, Linkedin, Mail } from 'lucide-react';
 
 const socialLinks = [
-  { icon: Linkedin, href: 'https://www.linkedin.com/in/taranmamidala/', label: 'LinkedIn' },
-  { icon: Github, href: 'https://github.com/taran-dev4u/', label: 'GitHub' },
-  { icon: Mail, href: 'mailto:mtaran014@gmail.com', label: 'Email' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/varan-mamidala-2b950b261/', label: 'LinkedIn' },
+  { icon: Github, href: 'https://github.com/varan0209', label: 'GitHub' },
+  { icon: Mail, href: 'mailto:varan4636@gmail.com', label: 'Email' },
 ];
 
 export const Footer = () => {
@@ -13,7 +13,7 @@ export const Footer = () => {
         <div className="flex flex-col items-center">
           {/* Logo */}
           <a href="#" className="font-display text-2xl font-bold mb-6">
-            <span className="gradient-text">Taran</span>
+            <span className="gradient-text">Varan</span>
             <span className="text-foreground"> Mamidala</span>
           </a>
 
@@ -45,8 +45,8 @@ export const Footer = () => {
 
           {/* Copyright */}
           <div className="text-center text-sm text-muted-foreground">
-            <p>Copyright {new Date().getFullYear()} Taran Mamidala. All rights reserved.</p>
-            <p className="mt-1">Machine Learning Engineer | Software Engineer | Data Engineer</p>
+            <p>Copyright {new Date().getFullYear()} Varan Mamidala. All rights reserved.</p>
+            <p className="mt-1">Data Analyst | Software Engineer | Python & SQL Developer</p>
             <p className="mt-3 text-xs">Limited analytics measure page and resume interactions.</p>
           </div>
         </div>

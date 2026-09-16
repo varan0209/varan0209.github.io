@@ -4,18 +4,18 @@ import { Bot, Cloud, DatabaseZap, Workflow } from 'lucide-react';
 
 const topics = [
   {
-    title: 'RAG and Vector Knowledge Systems',
-    description: 'Hybrid retrieval, reranking, citations, vector databases, and grounded answers for practical AI products.',
+    title: 'Advanced Data Warehousing & ETL Pipelines',
+    description: 'Snowflake, dbt, SQL query optimization, automated ETL orchestration, and scalable data modelling for analytics.',
     icon: DatabaseZap,
   },
   {
-    title: 'AI Agents and Tool Use',
-    description: 'Planning, tool calling, memory, validation loops, research workflows, and human review boundaries.',
+    title: 'Applied Machine Learning & NLP Systems',
+    description: 'Transformer architectures (BART, BERT), text summarization, hyperspectral classification, and predictive modeling.',
     icon: Bot,
   },
   {
-    title: 'LLMOps, Reproducibility, and AI Security',
-    description: 'Evaluation harnesses, regression tests, observability, reproducible pipelines, cost, latency, privacy, and prompt-injection awareness.',
+    title: 'Interactive BI & Executive Dashboards',
+    description: 'Advanced Power BI DAX formulas, Tableau calculated fields, real-time sales KPI tracking, and executive data storytelling.',
     icon: Workflow,
   },
 ];

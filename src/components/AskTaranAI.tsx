@@ -24,7 +24,7 @@ type ChatMessage = {
   matchedTopics?: string[];
 };
 
-const roles = ['AI Engineer', 'ML Engineer', 'Data Engineer', 'Software Engineer', 'Full Stack Developer'];
+const roles = ['Data Analyst', 'Software Engineer', 'Python Developer', 'SQL Developer', 'Data Engineer'];
 
 const modeLabels: { mode: ChatMode; label: string }[] = [
   { mode: 'general', label: 'General' },
@@ -38,11 +38,11 @@ const initialMessage: ChatMessage = {
   id: 'welcome',
   role: 'assistant',
   content:
-    "Ask me about Taran's AI projects, ML systems, research, experience, relocation, or which project is most relevant for a role. I answer from the portfolio knowledge base and cite the sections I used.",
+    "Ask me about Varan's data analytics dashboards, software engineering projects, experience, education, or which project is most relevant for a role. I answer from the portfolio knowledge base and cite the sections I used.",
   citations: [
     { label: 'Projects', href: '#projects' },
     { label: 'Experience', href: '#experience' },
-    { label: 'Growth', href: '#growth' },
+    { label: 'Education', href: '#education' },
   ],
 };
 
@@ -51,7 +51,7 @@ export const AskTaranAI = () => {
   const [messages, setMessages] = useState<ChatMessage[]>([initialMessage]);
   const [input, setInput] = useState('');
   const [mode, setMode] = useState<ChatMode>('general');
-  const [selectedRole, setSelectedRole] = useState('AI Engineer');
+  const [selectedRole, setSelectedRole] = useState('Data Analyst');
   const [serverQuestions, setServerQuestions] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [status, setStatus] = useState('Grounded portfolio assistant');
@@ -61,7 +61,7 @@ export const AskTaranAI = () => {
   const defaultQuestions = useMemo(() => {
     if (mode === 'role_match') {
       return [
-        `Why is Taran a strong ${selectedRole} candidate?`,
+        `Why is Varan a strong ${selectedRole} candidate?`,
         `Which projects best support ${selectedRole}?`,
         `What skills should I notice for ${selectedRole}?`,
       ];
@@ -194,10 +194,10 @@ export const AskTaranAI = () => {
         variant="ghost"
         onClick={openAssistant}
         className="ask-ai-launcher"
-        aria-label="Ask Taran AI"
+        aria-label="Ask Varan AI"
       >
         <Sparkles size={17} />
-        <span className="hidden sm:inline">Ask Taran AI</span>
+        <span className="hidden sm:inline">Ask Varan AI</span>
       </Button>
 
       {isOpen && (
@@ -211,7 +211,7 @@ export const AskTaranAI = () => {
                   </div>
                   <div>
                     <div className="flex flex-wrap items-center gap-2">
-                      <h2 className="font-display text-xl font-bold">Ask Taran AI</h2>
+                      <h2 className="font-display text-xl font-bold">Ask Varan AI</h2>
                       <Badge className="border-primary/30 bg-primary/10 text-primary">
                         Grounded
                       </Badge>

@@ -15,7 +15,7 @@ export const Preloader = () => {
         </div>
         <div className="text-center">
           <p className="font-display text-2xl font-bold tracking-normal">
-            <span className="gradient-text">Taran Mamidala</span>
+            <span className="gradient-text">Varan Mamidala</span>
           </p>
           <p className="mt-2 text-sm text-muted-foreground">Loading portfolio</p>
         </div>

@@ -5,42 +5,42 @@ import { getExperienceDuration } from '@/lib/experience';
 
 const strengths = [
   {
-    icon: Code2,
-    title: 'Software Delivery',
-    description: 'Backend APIs, full-stack tools, database-backed features, testing, documentation, and clean implementation habits.',
+    icon: Database,
+    title: 'Data Analytics & SQL',
+    description: 'Expertise in SQL queries, window functions, stored procedures, data cleaning, KPI analysis, and Power BI / Tableau dashboards.',
   },
   {
-    icon: Database,
-    title: 'Data & Systems Thinking',
-    description: 'ETL, validation, SQL, schema design, distributed processing, service integration, and reproducible data workflows.',
+    icon: Code2,
+    title: 'Python Automation',
+    description: 'Developing automated data handling scripts, analytical tools, stock trackers, and data pipeline integrations.',
   },
   {
     icon: Brain,
-    title: 'Research-Grade ML',
-    description: 'Machine learning pipelines, remote-sensing analysis, deep learning, computer vision, explainability, and practical evaluation.',
+    title: 'AI & Machine Learning',
+    description: 'Applied experience with Hugging Face Transformers (BART), 2D/3D CNNs, SVM, PCA/SVD, and NLP pipelines.',
   },
   {
     icon: Network,
-    title: 'Architecture Mindset',
-    description: 'APIs, backend services, DevOps practices, version control, automated testing, and scalable product structure.',
+    title: 'Full-Stack Web Dev',
+    description: 'Building responsive web applications using PHP, MySQL, JavaScript, HTML/CSS, authentication, and REST APIs.',
   },
   {
     icon: Handshake,
-    title: 'Collaboration',
-    description: 'Remote teamwork, research discussions, stakeholder translation, teaching support, leadership, and cross-domain communication.',
+    title: 'Team Collaboration',
+    description: 'Working in development teams, communicating insights with mentors and stakeholders, and managing end-to-end delivery.',
   },
   {
     icon: ShieldCheck,
-    title: 'Ownership',
-    description: 'A steady focus on reliability, data quality, reproducibility, confidentiality, and work that can be explained clearly in interviews.',
+    title: 'Problem Solving',
+    description: 'Analytical mindset focused on transforming raw, multi-source datasets into actionable business decisions.',
   },
 ];
 
 const stats = [
-  { value: '25 mo', label: 'iVinGo Tenure' },
-  { value: getExperienceDuration().label, label: 'Experience' },
-  { value: '2M+', label: 'Research Records' },
-  { value: '1', label: 'Peer-Reviewed Paper' },
+  { value: '3', label: 'Internships' },
+  { value: '$29.4M+', label: 'Sales Analyzed' },
+  { value: '60K+', label: 'Orders Processed' },
+  { value: '6+', label: 'Featured Projects' },
 ];
 
 export const About = () => {
@@ -60,12 +60,10 @@ export const About = () => {
             <span className="text-sm text-primary font-medium">About Me</span>
           </div>
           <h2 className="font-display text-4xl sm:text-5xl font-bold mb-6">
-            Engineer. Researcher. <span className="gradient-text">Always Learning.</span>
+            Data Analyst. Software Engineer. <span className="gradient-text">Problem Solver.</span>
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            I am a software, data, and AI engineer with experience across backend development, data platforms,
-            applied research, and machine learning. I enjoy learning new domains and turning that understanding into
-            reliable systems that people can use.
+            B.Tech Computer Science graduate from GITAM with hands-on experience in Python, SQL, Power BI, Tableau, Excel, machine learning, and full-stack web development.
           </p>
         </motion.div>
 
@@ -79,18 +77,13 @@ export const About = () => {
             <h3 className="font-display text-2xl font-bold mb-6 text-primary">How I Work</h3>
             <div className="space-y-5 text-muted-foreground leading-relaxed">
               <p>
-                I think of myself as an Absolute learner: curious enough to ask better questions and disciplined enough
-                to test, document, and improve the answer.
+                I hold a B.Tech in Computer Science and Engineering from GITAM (2021-2025). My focus spans both data analytics and software engineering—translating data into actionable business intelligence while building robust web and ML solutions.
               </p>
               <p>
-                My strongest work sits at the intersection of backend systems, data pipelines, machine learning,
-                research workflows, and product-facing interfaces. I care about clarity, reproducibility, and explaining
-                technical tradeoffs without hiding behind jargon.
+                Through internships at CodeAlpha, ColourMoon Technologies, and Prodigy Infotech, I have automated repetitive data handling tasks, delivered responsive full-stack applications (school management, e-commerce, food delivery), and designed ML models.
               </p>
               <p>
-                That mindset shows up in production web/data work, current nonprofit technology work, UB research collaboration,
-                and NRSC/ISRO climate-data research that grew into a peer-reviewed publication. I bring curiosity, but I also
-                bring the ownership to turn it into clear, maintainable work.
+                Whether analyzing $29.4M in sales data, engineering a BART-based text summarization pipeline, or developing 5-page Power BI dashboards, I bring analytical thinking, collaboration, and a results-driven mindset.
               </p>
             </div>
 

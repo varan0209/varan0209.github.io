@@ -5,6 +5,7 @@ import {
   BarChart3,
   BrainCircuit,
   ChevronRight,
+  Code2,
   Cpu,
   Database,
   ExternalLink,
@@ -74,14 +75,10 @@ const projectCoverImages = {
 
 const roles = [
   'All Projects',
-  'Open Source',
-  'Software Developer',
-  'Data Engineer',
-  'Full Stack Developer',
-  'Machine Learning Engineer',
-  'AI Engineer',
-  'Computer Vision',
-  'Security',
+  'Data Analyst',
+  'Software Engineer',
+  'Machine Learning & AI',
+  'Full Stack Web Dev',
 ];
 
 const resolveProjectImage = (path: string) =>
@@ -92,828 +89,208 @@ const getProjectCoverSrc = (project: Project) => {
 
   const haystack = `${project.title} ${project.role} ${project.subject || ''} ${project.context}`.toLowerCase();
 
-  if (haystack.includes('automodel') || haystack.includes('nemo') || haystack.includes('nvidia') || haystack.includes('flexmeasures') || haystack.includes('timely-beliefs') || haystack.includes('aquascope') || haystack.includes('open source')) return projectCoverImages.opensource;
-  if (haystack.includes('co2') || haystack.includes('climate') || haystack.includes('satellite')) return projectCoverImages.climate;
-  if (haystack.includes('inpainting') || haystack.includes('vision') || haystack.includes('face') || haystack.includes('image')) return projectCoverImages.vision;
-  if (haystack.includes('aviation')) return projectCoverImages.aviation;
-  if (haystack.includes('spark') || haystack.includes('analytics') || haystack.includes('data pipeline') || haystack.includes('statistical') || haystack.includes('lakehouse')) return projectCoverImages.analytics;
-  if (haystack.includes('pintos') || haystack.includes('operating systems') || haystack.includes('rate limiter') || haystack.includes('microservices')) return projectCoverImages.systems;
-  if (haystack.includes('stock') || haystack.includes('fraud') || haystack.includes('mercedes') || haystack.includes('price')) return projectCoverImages.finance;
-  if (haystack.includes('database') || haystack.includes('dbms') || haystack.includes('sql') || haystack.includes('movie')) return projectCoverImages.database;
-  if (haystack.includes('password') || haystack.includes('security') || haystack.includes('cryptography') || haystack.includes('elgamal')) return projectCoverImages.security;
-  if (haystack.includes('mobile') || haystack.includes('android')) return projectCoverImages.mobile;
-  if (haystack.includes('leetcode') || haystack.includes('algorithm') || haystack.includes('competitive')) return projectCoverImages.algorithms;
-  if (haystack.includes('raspberry') || haystack.includes('arduino') || haystack.includes('iot') || haystack.includes('embedded')) return projectCoverImages.embedded;
-  if (haystack.includes('rag') || haystack.includes('agent') || haystack.includes('mlops') || haystack.includes('pytorch') || haystack.includes('learning')) return projectCoverImages.ai;
-  if (haystack.includes('web') || haystack.includes('saas') || haystack.includes('dashboard')) return projectCoverImages.web;
+  if (haystack.includes('adventure') || haystack.includes('zomato') || haystack.includes('blinkit') || haystack.includes('sales') || haystack.includes('analytics')) return projectCoverImages.analytics;
+  if (haystack.includes('summarization') || haystack.includes('nlp') || haystack.includes('hyperspectral') || haystack.includes('deep learning')) return projectCoverImages.ai;
+  if (haystack.includes('library') || haystack.includes('web') || haystack.includes('crud') || haystack.includes('php')) return projectCoverImages.web;
+  if (haystack.includes('stock') || haystack.includes('portfolio') || haystack.includes('finance')) return projectCoverImages.finance;
 
   return publicAsset(defaultProjectCover);
 };
 
 const projects: Project[] = [
   {
-    title: 'Career Job Monitor — Automated SWE & AI Opportunity Engine',
-    role: 'Software Developer',
-    status: 'Live',
-    context: 'Automated Multi-Source Opportunity Engine · 30-Min Schedule',
-    subject: 'Automation & Systems',
-    overview:
-      'Production automated job monitoring pipeline tracking SWE, Data, and AI openings across leading technology portals every 30 minutes with multi-criteria experience, visa sponsorship, and skill matching.',
-    technologies: ['Node.js', 'GitHub Actions', 'JavaScript', 'REST APIs', 'CI/CD', 'Automation', 'Data Pipelines'],
-    keyFeatures: [
-      'Engineered automated Cron workflow executing every 30 minutes to discover active job requisitions across top enterprise portals.',
-      'Implemented automated multi-layer qualification filters for experience levels, new grad roles, and sponsorship availability.',
-      'Maintains deterministic historical state tracking, decision records, and Markdown summary dashboards.',
-      'Automated candidate alerting and structured JSON data feeds for live client dashboard integration.',
-    ],
-    outcome:
-      'Eliminated manual job board hunting with automated real-time discovery, qualification, and structured reporting.',
-    icon: Workflow,
-    githubUrl: 'https://github.com/taran-dev4u/career-job-monitor',
-  },
-  {
-    title: 'Django-CRM — Multi-Tenant Lead Enrichment & Engine Architecture',
-    role: 'Open Source',
+    title: 'Text Summarization Model (BART Transformer)',
+    role: 'Machine Learning & AI',
     status: 'Completed',
-    context: 'Django-CRM (1,000+ Stars) · Production Open Source Contributions',
+    context: 'Natural Language Processing & Deep Learning',
+    subject: 'AI & NLP',
     overview:
-      'Open-source engineering contributions to Django-CRM implementing multi-tenant REST API architecture, duplicate lead detection algorithms, and cloud attachment pipelines.',
-    technologies: ['Python', 'Django', 'Django REST Framework', 'PostgreSQL', 'Multi-Tenancy', 'pytest', 'Docker'],
+      'Independently designed an AI-powered text summarization solution utilizing the BART-large-cnn model for both short- and long-form document processing.',
+    technologies: ['NLP', 'Python', 'Hugging Face Transformers', 'BART', 'PyTorch', 'Text Chunking', 'Jupyter Notebook'],
     keyFeatures: [
-      'Engineered high-performance lead deduplication algorithms across contact accounts and business opportunities.',
-      'Optimized multi-tenant schema isolation boundaries and query execution plans for enterprise scalability.',
-      'Authored comprehensive unit and integration test coverage validating tenant data boundaries.',
-      'Documented API schemas and contribution guidelines for 1,000+ open-source deployments.',
+      'Implemented sequence-to-sequence summarization using the pre-trained BART-large-cnn model.',
+      'Engineered a multi-stage chunking and consolidation pipeline to handle long-form documents seamlessly.',
+      'Optimized tokenization and beam search parameters to reduce hallucination and enhance summary cohesion.',
+      'Evaluated summary output quality using ROUGE metric benchmarks across diverse document sets.',
     ],
     outcome:
-      'Enhanced CRM data integrity, deduplication accuracy, and multi-tenant performance for large-scale enterprise deployments.',
-    icon: ServerCog,
-    githubUrl: 'https://github.com/taran-dev4u/django-crm-lead-enrichment',
-  },
-  {
-    title: 'NVIDIA NeMo Automodel — VLM Processor Artifact Serialization',
-    role: 'Open Source',
-    status: 'Completed',
-    context: 'NVIDIA-NeMo/Automodel (867+ Stars) · Merged Upstream PR #3379',
-    overview:
-      'Production open-source contribution to NVIDIA NeMo Automodel adding robust artifact serialization for Vision-Language Model (VLM) processors with tokenizer fallback mechanisms when merging LoRA adapter weights.',
-    technologies: ['Python', 'PyTorch', 'Hugging Face', 'Transformers', 'LoRA', 'VLM', 'pytest', 'CI/CD'],
-    keyFeatures: [
-      'Implemented automated VLM processor artifact saving during standalone LoRA merging in tools/merge_lora.py.',
-      'Engineered fallback detection for AutoProcessor and AutoTokenizer for seamless backward compatibility.',
-      'Authored dependency-safe mock unit test suite validating AutoProcessor.from_pretrained and save_pretrained invocations.',
-      'Passed full repository test suites, DCO sign-off, Ruff linting, and maintainer review by the NVIDIA NeMo team.',
-    ],
-    outcome:
-      'Eliminated runtime processor mismatch errors for multimodal models post-LoRA merge in enterprise production environments.',
+      'Built a reliable NLP pipeline capable of extracting key insights from long documents with high semantic retention.',
     icon: BrainCircuit,
-    githubUrl: 'https://github.com/NVIDIA-NeMo/Automodel/pull/3379',
+    githubUrl: 'https://github.com/varan0209/bart-text-summarizer',
   },
   {
-    title: 'FlexMeasures — Multi-Tenant Account Role Filtering',
-    role: 'Open Source',
+    title: 'Hyperspectral Image Classification',
+    role: 'Machine Learning & AI',
     status: 'Completed',
-    context: 'FlexMeasures/flexmeasures (206+ Stars) · Merged Upstream PR #2353',
+    context: 'Deep Learning & Computer Vision Project',
+    subject: 'Deep Learning & Dimensionality Reduction',
     overview:
-      'Full-stack open-source feature implementation adding authorization-bounded account role filtering to the FlexMeasures REST API and access-scoped management UI.',
-    technologies: ['Python', 'Flask', 'SQLAlchemy', 'Marshmallow', 'OpenAPI', 'Jinja2', 'pytest'],
+      'Led end-to-end design of a hyperspectral image classification pipeline using 2D/3D Convolutional Neural Networks (CNNs) and Support Vector Machines (SVM).',
+    technologies: ['Deep Learning', 'TensorFlow', 'SVM', '2D/3D CNNs', 'PCA', 'SVD', 'Python', 'Scikit-learn'],
     keyFeatures: [
-      'Added secure multi-tenant role filtering queries to backend Accounts API endpoints with explicit security boundaries.',
-      'Built responsive, access-scoped UI selector component for tenant administrators.',
-      'Implemented comprehensive test coverage covering tenant isolation, multi-role users, and pagination boundaries.',
-      'Generated updated OpenAPI specifications and user-facing changelog documentation.',
+      'Applied Principal Component Analysis (PCA) and Singular Value Decomposition (SVD) for spectral dimensionality reduction.',
+      'Designed dual 2D/3D CNN architectures to extract both spatial and spectral feature maps efficiently.',
+      'Benchmarked deep learning models against traditional SVM classifiers on accuracy, precision, and recall metrics.',
+      'Generated data-driven trade-off reports comparing computational complexity vs. classification accuracy.',
     ],
     outcome:
-      'Streamlined user role governance for energy asset operators while strictly enforcing multi-tenant isolation boundaries.',
-    icon: ServerCog,
-    githubUrl: 'https://github.com/FlexMeasures/flexmeasures/pull/2353',
+      'Achieved superior classification accuracy on complex spectral bands while significantly reducing feature dimensionality.',
+    icon: Cpu,
+    githubUrl: 'https://github.com/varan0209/Hyperspectral-Image-Classification',
   },
   {
-    title: 'timely-beliefs — BeliefSource Strict Total Ordering',
-    role: 'Open Source',
+    title: 'Adventure Works Sales & Profit Analysis',
+    role: 'Data Analyst',
     status: 'Completed',
-    context: 'SeitaBV/timely-beliefs · Merged Upstream PR #245',
+    context: 'Data Analytics & Business Intelligence Project',
+    subject: 'Sales & Financial Analytics',
     overview:
-      'Fixed a core data-integrity bug by enforcing strict total ordering on BeliefSource to prevent silent NaN value generation during Pandas MultiIndex alignment.',
-    technologies: ['Python', 'Pandas', 'SQLAlchemy', 'MultiIndex', 'Data Modeling', 'pytest'],
+      'Analyzed $29.4M in sales across 60K orders by evaluating sales performance, profitability, customer demographics, product categories, geography, and time-based metrics.',
+    technologies: ['SQL', 'Power BI', 'Tableau', 'Excel', 'MySQL', 'Stored Procedures', 'Window Functions', 'KPI Analytics'],
     keyFeatures: [
-      'Implemented strict total ordering on BeliefSource via __lt__ using a stable tiebreaker while preserving SQLAlchemy identity hashing.',
-      'Prevented non-deterministic sorting issues that caused silent NaNs when aligning time-series BeliefsDataFrames.',
-      'Added comprehensive regression unit tests verifying total ordering, sort stability, and Pandas index alignment.',
+      'Evaluated $29.4M total sales across 60,000+ orders to identify key revenue drivers and profit margins.',
+      'Developed advanced SQL scripts using joins, aggregations, CTEs, views, and stored procedures for data extraction.',
+      'Translated complex query outputs into interactive, executive-ready Power BI, Tableau, and Excel dashboards.',
+      'Provided strategic recommendations on geographical expansion and product-line profitability.',
     ],
     outcome:
-      'Restored deterministic time-series alignment for multi-source probabilistic sensor data across downstream analytics pipelines.',
-    icon: Database,
-    githubUrl: 'https://github.com/SeitaBV/timely-beliefs/pull/245',
-  },
-  {
-    title: 'AquaScope — Extreme Value Theory & Hydrology Intelligence Platform',
-    role: 'Open Source',
-    status: 'Live',
-    context: 'Rekin226/aquascope · 9 Merged Upstream PRs',
-    overview:
-      'Engineered core scientific and statistical modules for AquaScope, including Extreme Value Theory flood frequency bounds, Mann-Kendall trend tests, Sen’s slope, and live catchment data collectors.',
-    technologies: ['Python', 'NumPy', 'SciPy', 'Extreme Value Theory', 'Streamlit', 'GeoJSON', 'GitHub Actions'],
-    keyFeatures: [
-      'Seeded MLE GEV distribution fitting with L-moments and enforced shape constraints to prevent return-period quantile explosions on 40-year records (PR #154).',
-      'Vectorized pure SciPy/NumPy implementations of Mann-Kendall statistical trend detection and Sen’s slope estimator (PR #147).',
-      'Shipped CAMELS-BR data collector parsing 897 Brazilian catchments into standardized OGC GeoJSON schemas (PR #140).',
-      'Built standalone CI GitHub Action verifying PR changelog requirements with custom unit test guards (PR #150).',
-    ],
-    outcome:
-      'Strengthened AquaScope’s hydrological modeling accuracy, statistical rigor, and CI quality gates across 27+ live international water sources.',
-    icon: Layers3,
-    githubUrl: 'https://github.com/Rekin226/aquascope/pulls?q=is%3Apr+author%3Ataran-dev4u',
-  },
-  {
-    title: 'Atmospheric CO2 and LULC Modeling Pipeline',
-    role: 'Machine Learning Engineer',
-    status: 'Completed',
-    context: 'NRSC / ISRO research internship',
-    overview:
-      'Research-grade geospatial climate-data workflow for atmospheric CO2 analysis across India using satellite observations, climate zones, LULC features, regression modeling, and explainability.',
-    technologies: ['Python', 'xarray', 'NetCDF4', 'GeoPandas', 'SHAP', 'PostgreSQL', 'Streamlit'],
-    keyFeatures: [
-      'Processed multi-year satellite datasets from AIRS, GOSAT, SCIAMACHY, OCO-2, and OCO-3.',
-      'Mapped CO2 trends against Koppen-Geiger climate zones and land-use classes.',
-      'Used explainability to understand drivers behind regression outputs.',
-      'Built reproducible reporting workflows for analysis and review.',
-      'Contributed to work later published in the International Journal of Remote Sensing, DOI 10.1080/01431161.2025.2562005.',
-    ],
-    outcome:
-      'Connected climate science, large-scale data processing, modeling, explainability, and publication-ready technical storytelling.',
-    icon: RadioTower,
-    githubUrl: 'https://github.com/taran-dev4u/satellite-co2-climate-analytics',
-  },
-  {
-    title: 'Enhanced Image Inpainting With Transformer-GAN',
-    role: 'Computer Vision',
-    status: 'Completed',
-    context: 'CSE 676 deep learning final project',
-    overview:
-      'Hybrid image inpainting model combining transformer attention blocks with GAN training to reconstruct masked facial regions on CelebA images.',
-    technologies: ['PyTorch', 'Transformers', 'GANs', 'CelebA', 'OpenCV', 'LPIPS', 'CUDA'],
-    keyFeatures: [
-      'Used adversarial and perceptual objectives for realistic facial reconstruction.',
-      'Designed experiments around irregular masks and large missing regions.',
-      'Compared reconstruction quality through image-focused metrics and visual checks.',
-      'Organized training data, preprocessing, and model components into a repeatable pipeline.',
-    ],
-    outcome:
-      'Built deeper intuition for modern vision architectures, loss design, and model evaluation beyond accuracy alone.',
-    icon: ImageIcon,
-    githubUrl: 'https://github.com/taran-dev4u/transformer-gan-image-restoration',
-  },
-  {
-    title: 'Aviation Accident Analysis: Trends, Causes, and Safety Measures',
-    role: 'Data Engineer',
-    status: 'Completed',
-    context: 'CSE 587 data-intensive computing project',
-    overview:
-      'Large-scale aviation accident analysis using crash records from 1948 to 2022, with structured cleaning, exploratory analysis, trend discovery, and safety-focused interpretation.',
-    technologies: ['Python', 'Pandas', 'Data Cleaning', 'EDA', 'Visualization', 'Kaggle Dataset'],
-    keyFeatures: [
-      'Performed 10 distinct data-cleaning steps and 10 exploratory analysis steps on aviation accident records.',
-      'Studied accident trends, causes, fatalities, aircraft behavior, geography, and operational safety signals.',
-      'Built visual explanations to make historical accident patterns easier to review.',
-      'Connected technical analysis with practical aviation safety and risk-reduction questions.',
-    ],
-    outcome:
-      'Improved my ability to turn messy historical datasets into clear, domain-aware findings for decision making.',
+      'Delivered actionable business insights that highlighted high-margin product categories and optimized sales strategy.',
     icon: BarChart3,
-    githubUrl: 'https://github.com/taran-dev4u/aviation-accident-risk-analytics',
+    githubUrl: 'https://github.com/varan0209',
   },
   {
-    title: 'Spark Text Processing Word Count',
-    role: 'Data Engineer',
+    title: 'BookNest — Online Library Management System',
+    role: 'Full Stack Web Dev',
     status: 'Completed',
-    context: 'GitHub data-engineering lab',
-    subject: 'Distributed Text Processing',
+    context: 'Full-Stack Web Application',
+    subject: 'Web Application & Database Systems',
     overview:
-      'Compact distributed text-processing workflow using Spark-style transformations for word count, normalization, stopword handling, sorted frequency output, and result interpretation.',
-    technologies: ['Apache Spark', 'Python', 'RDDs', 'Text Processing', 'Stopword Filtering', 'Frequency Analysis'],
+      'Directed the design and development of a full-stack web application covering cataloging, user reservations, inventory management, and checkout functionality.',
+    technologies: ['PHP', 'MySQL', 'JavaScript', 'HTML5/CSS3', 'Bootstrap', 'CRUD Workflows'],
     keyFeatures: [
-      'Loaded multiple text files as a corpus and tokenized them into countable terms.',
-      'Applied case normalization, punctuation handling, and stopword filtering to reduce noisy output.',
-      'Mapped and reduced terms into frequency counts, then sorted results for interpretation.',
-      'Documented the core pattern behind larger distributed text pipelines in a concise repo.',
+      'Developed responsive front-end interfaces integrated with PHP backend logic and a MySQL database.',
+      'Implemented complete CRUD workflows for managing book inventories, user accounts, and borrowing transactions.',
+      'Enforced relational data integrity and transaction safety for reservation and return operations.',
+      'Streamlined library administrative tasks, significantly improving process efficiency and data accuracy.',
     ],
     outcome:
-      'Shows hands-on comfort with distributed data-processing fundamentals before scaling into larger Spark pipelines.',
-    icon: Workflow,
-    githubUrl: 'https://github.com/taran-dev4u/spark-text-processing-wordcount',
-  },
-  {
-    title: 'Pintos Threads and Scheduler',
-    role: 'Software Developer',
-    status: 'Completed',
-    context: 'CSE 521 operating systems project',
-    overview:
-      'Kernel-level scheduling work in Pintos covering fixed-point arithmetic, recent CPU calculations, load average updates, priority updates, and ready-list ordering.',
-    technologies: ['C', 'Pintos OS', 'Kernel Scheduling', 'Synchronization', 'GDB', 'Linux'],
-    keyFeatures: [
-      'Implemented scheduler math and update logic inside core thread modules.',
-      'Worked with low-level debugging, kernel tests, and concurrency behavior.',
-      'Contributed to a team submission that passed the PA1 test suite locally and on Autolab.',
-      'Practiced reading and extending a real operating-system teaching kernel.',
-    ],
-    outcome:
-      'Improved my systems-level reasoning around scheduling, synchronization, and correctness under constrained APIs.',
-    icon: Cpu,
-    coverImage: 'pintos.png',
-    githubUrl: 'https://github.com/taran-dev4u/pintos-kernel-systems-lab',
-  },
-  {
-    title: 'Pintos User Programs and System Calls',
-    role: 'Software Developer',
-    status: 'Completed',
-    context: 'CSE 521 operating systems project',
-    overview:
-      'User-program support in Pintos covering command-line argument passing, user stack setup, process loading, syscall handling, pointer validation, file descriptors, and parent-child synchronization.',
-    technologies: ['C', 'Pintos OS', 'System Calls', 'User Programs', 'GDB', 'Linux'],
-    keyFeatures: [
-      'Implemented argument parsing and stack setup for user-space process execution.',
-      'Built syscall support around read, write, open, close, create, remove, exec, and wait behavior.',
-      'Added parent-child loading synchronization and safer user-kernel boundary checks.',
-      'Worked inside a constrained OS codebase while preserving starter-kit boundaries.',
-    ],
-    outcome:
-      'Strengthened my systems programming discipline around process control, memory safety, and kernel/user interfaces.',
-    icon: Cpu,
-    coverImage: 'pintos2.png',
-    githubUrl: 'https://github.com/taran-dev4u/pintos-kernel-systems-lab',
-  },
-  {
-    title: 'Stock Market Database for Real-Time Analysis',
-    role: 'Data Engineer',
-    status: 'Completed',
-    context: 'CSE 560 database systems project',
-    overview:
-      'SQL-based database design for stock-market analytics and transaction management across prices, company actions, market news, broker forecasts, users, trades, and portfolios.',
-    technologies: ['SQL', 'ER Modeling', 'Normalization', 'Transactions', 'Indexing', 'Financial Data'],
-    keyFeatures: [
-      'Modeled financial entities and relationships for analytical and transactional workloads.',
-      'Designed schema structure around integrity, joins, updates, and query flexibility.',
-      'Supported user signup, stock trades, corporate actions, and portfolio-style queries.',
-      'Replaced spreadsheet-style thinking with normalized relational design.',
-    ],
-    outcome:
-      'Built a stronger foundation in database design, query planning, and data integrity for real-world domains.',
+      'Delivered an operational full-stack web system for managing academic library operations.',
     icon: Database,
-    coverImage: 'stock%20price%20prediction%20project.png',
-    githubUrl: 'https://github.com/taran-dev4u/stock-market-transaction-analytics-db',
+    githubUrl: 'https://github.com/varan0209/BookNest',
   },
   {
-    title: 'Penguin Classification Pipeline',
-    role: 'Machine Learning Engineer',
+    title: 'Stock Portfolio Tracker & Python Automations',
+    role: 'Software Engineer',
     status: 'Completed',
-    context: 'CSE 574 introduction to machine learning assignment',
+    context: 'CodeAlpha Internship Project',
+    subject: 'Python Automation & Financial Tools',
     overview:
-      'Classification workflow for penguin records covering data cleaning, categorical handling, feature preparation, model training, and evaluation across species and biological measurements.',
-    technologies: ['Python', 'Pandas', 'Scikit-learn', 'EDA', 'Feature Engineering', 'Classification'],
+      'Built a Stock Portfolio Tracker to analyze investment data and calculate profit/loss, alongside custom Python data automation scripts to eliminate manual inefficiencies.',
+    technologies: ['Python', 'Pandas', 'Automation Scripts', 'Rule-Based Chatbots', 'Financial Data Processing'],
     keyFeatures: [
-      'Cleaned missing values, duplicates, mismatched formats, and outliers before modeling.',
-      'Prepared species, island, bill measurements, flipper length, body mass, and gender features.',
-      'Applied feature selection, normalization, and train-test splitting for reliable evaluation.',
-      'Compared model behavior using a structured preprocessing pipeline.',
+      'Automated repetitive data handling tasks using custom Python scripting to eliminate manual processing effort.',
+      'Engineered a Stock Portfolio Tracker that parses stock transactions, tracks real-time value, and calculates ROI/P&L.',
+      'Collaborated on designing a rule-based chatbot and interactive game to strengthen algorithmic logic.',
     ],
     outcome:
-      'Built a stronger foundation in supervised learning workflows and careful preprocessing before modeling.',
-    icon: BrainCircuit,
-    coverImage: 'penguin_project.png',
+      'Streamlined routine data operations and built financial analytics tools during internship.',
+    icon: Workflow,
+    githubUrl: 'https://github.com/varan0209/CodeAlpha_python_projects',
   },
   {
-    title: 'Diamonds Price Prediction',
-    role: 'Machine Learning Engineer',
+    title: 'International Trade Data Analysis Pipeline',
+    role: 'Data Analyst',
     status: 'Completed',
-    context: 'CSE 574 / statistical modeling coursework',
+    context: 'Data Engineering & Trade Analytics',
+    subject: 'Python Pipeline & Data Cleaning',
     overview:
-      'Regression-focused analysis of diamond pricing using structured feature preparation, scaling, dimensionality reduction, model comparison, and error-based evaluation.',
-    technologies: ['Python', 'Pandas', 'Scikit-learn', 'Regression', 'PCA', 'Visualization'],
+      'Designed a Python-based data analysis pipeline to parse, clean, transform, and analyze multi-country international import/export trade datasets.',
+    technologies: ['Python', 'Pandas', 'Data Cleaning', 'Data Pipeline', 'Data Visualization', 'Trade Analytics'],
     keyFeatures: [
-      'Prepared structured diamond attributes for regression and dimensionality-reduction experiments.',
-      'Analyzed feature distributions, correlations, scaling behavior, and outlier impact.',
-      'Compared prediction approaches using practical regression metrics.',
-      'Connected statistical preprocessing decisions to model stability and interpretability.',
+      'Engineered data extraction and transformation functions in Python to process unstructured trade records.',
+      'Handled missing values, outliers, and unit conversions across regional commodity trading codes.',
+      'Generated analytical trend visualizations highlighting trade imbalances and top export sectors.',
     ],
     outcome:
-      'Improved my regression workflow, feature-analysis habits, and ability to explain model tradeoffs.',
+      'Automated complex multi-country trade data transformation into clean, analysis-ready data tables.',
     icon: LineChart,
-    coverImage: 'diamonds%20project.png',
+    githubUrl: 'https://github.com/varan0209/International-Trade-Data-Analysis-Pipeline',
   },
   {
-    title: 'Mercedes-Benz Test-Bench Time Prediction',
-    role: 'Machine Learning Engineer',
+    title: 'Zomato Sales & Rating Analysis',
+    role: 'Data Analyst',
     status: 'Completed',
-    context: 'MGS 659 web analytics project',
+    context: 'Global Restaurant Performance & Customer Insights',
+    subject: 'SQL Analytics & Visualization',
     overview:
-      'Production-time prediction pipeline for Mercedes-Benz vehicle configurations using one-hot encoding, scaling, PCA, cross-validation, model comparison, and a packaged app workflow.',
-    technologies: ['Python', 'PCA', 'Scikit-learn', 'XGBoost', 'SHAP', 'Gradio', 'Analytics'],
+      'Analyzed restaurant performance across 9,551 restaurants, 15 countries, and 141 cities to identify sales, ratings, and culinary trends.',
+    technologies: ['SQL', 'Tableau', 'MySQL', 'Window Functions', 'REGEXP', 'Data Visualization'],
     keyFeatures: [
-      'Compared Linear Regression, Random Forest, and XGBoost with and without PCA.',
-      'Used cross-validation and test-set evaluation to choose a practical final model.',
-      'Packaged the selected pipeline for local use and stakeholder review.',
-      'Considered explainability, planning value, and sustainability impact.',
+      'Processed and cleaned restaurant records spanning 9,551 establishments in 141 cities globally.',
+      'Applied advanced SQL techniques including window functions, stored procedures, REGEXP, and complex joins.',
+      'Discovered core drivers influencing user ratings, price ranges, online delivery adoption, and cuisine popularity.',
+      'Built interactive Tableau dashboards to visually present global dining trends and market benchmarks.',
     ],
     outcome:
-      'Selected Linear Regression with PCA, reaching 8.23 RMSE, 5.55 MAE, and 0.565 R2 on unseen data.',
+      'Created reusable analytical SQL queries and dashboards for multi-country market research.',
     icon: LineChart,
-    githubUrl: 'https://github.com/taran-dev4u/mercedes-benz-test-time-forecasting',
+    githubUrl: 'https://github.com/varan0209',
   },
   {
-    title: 'R Statistical Mining With PCA and Clustering',
-    role: 'Data Engineer',
+    title: 'Blinkit Sales Performance Dashboard',
+    role: 'Data Analyst',
     status: 'Completed',
-    context: 'EAS 507 statistical data mining coursework',
-    subject: 'Statistical Mining',
+    context: 'Quick-Commerce Retail Analytics',
+    subject: 'Power BI & Excel BI',
     overview:
-      'R-based statistical data mining project covering exploratory visualization, distribution checks, PCA, clustering, anomaly review, and interpretation-focused modeling.',
-    technologies: ['R', 'PCA', 'K-Means', 'Clustering', 'Visualization', 'Statistical Learning'],
+      'Analyzed $1.20M in sales across 16 item types by cleaning raw quick-commerce data in Excel and developing an interactive 5-page Power BI dashboard.',
+    technologies: ['Power BI', 'Excel (Advanced)', 'DAX', 'Decomposition Tree', 'KPI Cards', 'Data Cleaning'],
     keyFeatures: [
-      'Inspected datasets with pair plots, histograms, distribution checks, and exploratory summaries.',
-      'Applied PCA to reduce dimensionality while explaining variance and component behavior.',
-      'Compared clustering outputs after considering scaling, context, and outlier behavior.',
-      'Focused on interpreting statistical results instead of only running algorithms.',
+      'Prepared, cleaned, and structured raw sales data across 16 distinct product item categories in Excel.',
+      'Designed a comprehensive 5-page Power BI dashboard featuring dynamic slicers, KPI cards, and custom visuals.',
+      'Utilized Decomposition Tree analysis to break down sales figures by outlet size, location type, and item fat content.',
+      'Derived actionable recommendations for outlet inventory allocation and item stock optimization.',
     ],
     outcome:
-      'Strengthened statistical modeling judgment around scaling, dimensionality reduction, clustering, and anomaly-aware analysis.',
-    icon: LineChart,
-    githubUrl: 'https://github.com/taran-dev4u/r-statistical-mining-pca-clustering',
+      'Provided store managers with an intuitive BI tool to track $1.20M in sales and streamline outlet performance.',
+    icon: BarChart3,
+    githubUrl: 'https://github.com/varan0209',
   },
   {
-    title: 'Treasure Hunt Grid World Reinforcement Learning',
-    role: 'Machine Learning Engineer',
+    title: 'LeetCode Daily DSA Problem Solving',
+    role: 'Software Engineer',
     status: 'Completed',
-    context: 'CSE 574 reinforcement learning assignment',
+    context: 'Data Structures & Algorithms Mastery',
+    subject: 'Algorithm Optimization',
     overview:
-      'A 5x5 treasure-hunt grid world where an agent learns to collect a key, avoid traps, and reach the goal using reinforcement learning policies.',
-    technologies: ['Python', 'NumPy', 'SARSA', 'Double Q-Learning', 'Reinforcement Learning', 'Matplotlib'],
+      'Maintained a structured repository of solved LeetCode Data Structures & Algorithms problems in Python focusing on optimal space/time complexity.',
+    technologies: ['Python', 'Data Structures', 'Algorithms', 'Problem Solving', 'Complexity Analysis'],
     keyFeatures: [
-      'Defined 25 grid states with start, key, trap, and goal positions.',
-      'Modeled four movement actions and reward signals for key collection, traps, and goal completion.',
-      'Compared learning behavior across SARSA and Double Q-learning style approaches.',
-      'Visualized learned policies, rewards, and exploration behavior.',
+      'Implemented solutions across arrays, dynamic programming, trees, graphs, and two-pointer algorithms.',
+      'Documented approach breakdowns and edge-case handling for technical interview preparation.',
     ],
     outcome:
-      'Strengthened my understanding of RL environments, reward design, policy learning, and exploration tradeoffs.',
-    icon: Workflow,
-    coverImage: 'qlearning%20project.png',
+      'Demonstrated continuous problem-solving practice and mastery of foundational Computer Science algorithms.',
+    icon: Code2,
+    githubUrl: 'https://github.com/varan0209/leetcode_Daily_Question',
   },
   {
-    title: 'Computer Vision Pipeline Suite',
-    role: 'Computer Vision',
+    title: 'ByteXL InfoHub Web Platform',
+    role: 'Full Stack Web Dev',
     status: 'Completed',
-    context: 'CSE 473/573 computer vision projects',
+    context: 'Educational Information Platform',
+    subject: 'Web Application Design',
     overview:
-      'A set of vision pipelines covering camera calibration, rotation matrices, panorama stitching, background stitching, face detection, embeddings, and clustering.',
-    technologies: ['Python', 'OpenCV', 'NumPy', 'SciPy', 'RANSAC', 'Scikit-learn'],
+      'Developed a responsive web platform to organize student learning resources, course guides, and technical information hubs.',
+    technologies: ['JavaScript', 'HTML5', 'CSS3', 'Web Development', 'UI/UX Design'],
     keyFeatures: [
-      'Implemented calibration and projection-matrix logic for coordinate transformations.',
-      'Built stitching workflows using keypoints, feature matching, homography, and RANSAC.',
-      'Developed face detection and clustering workflows from image collections.',
-      'Practiced both geometry-heavy and model-assisted computer vision techniques.',
+      'Created modular HTML/CSS layouts for intuitive navigation across academic course modules.',
+      'Implemented interactive JavaScript elements for search, filtering, and responsive rendering.',
     ],
     outcome:
-      'Connected mathematical vision fundamentals with practical image-processing workflows and evaluation constraints.',
-    icon: ScanFace,
-    coverImage: 'face%20attendence%20project.png',
-    githubUrl: 'https://github.com/taran-dev4u/computer-vision-geometry-stitching-detection',
-  },
-  {
-    title: 'Online Product Reviews Sentiment Analysis',
-    role: 'Machine Learning Engineer',
-    status: 'Completed',
-    context: 'Undergraduate NLP / ML project',
-    overview:
-      'Product-review sentiment classifier using web-scraped review data, text preprocessing, vectorization, model comparison, and a Random Forest final model.',
-    technologies: ['Python', 'BeautifulSoup', 'NLTK', 'Scikit-learn', 'Random Forest', 'Flask'],
-    keyFeatures: [
-      'Collected online product reviews through web scraping and prepared text for sentiment modeling.',
-      'Compared SVM, Logistic Regression, and Random Forest using accuracy, precision, and recall.',
-      'Selected Random Forest after reaching 95.0% accuracy, 0.95 precision, and 0.94 recall in the report.',
-      'Connected NLP modeling with a deployable review-classification workflow.',
-    ],
-    outcome:
-      'Built confidence with end-to-end NLP workflows from collection and cleaning to model evaluation and simple deployment.',
-    icon: BrainCircuit,
-    githubUrl: 'https://github.com/taran-dev4u/ecommerce-review-sentiment-analytics',
-  },
-  {
-    title: 'Bayesian Biomonitoring Early Warning',
-    role: 'Machine Learning Engineer',
-    status: 'Completed',
-    context: 'Undergraduate probabilistic ML project',
-    subject: 'Probabilistic Modeling',
-    overview:
-      'Probabilistic biomonitoring project using Bayesian networks to represent uncertainty, connect monitoring variables, and reason about early warning signals.',
-    technologies: ['Python', 'Bayesian Networks', 'pgmpy', 'Probabilistic Modeling', 'Pandas', 'Inference'],
-    keyFeatures: [
-      'Framed biomonitoring as an uncertainty-aware reasoning problem instead of a simple threshold check.',
-      'Defined monitoring variables, dependency structure, and welfare-state interpretation.',
-      'Prepared the project for conditional probability tables and inference examples.',
-      'Connected biological monitoring concepts with practical probabilistic ML modeling.',
-    ],
-    outcome:
-      'Added depth in uncertainty modeling, graphical models, and explainable reasoning for risk-oriented ML systems.',
-    icon: BrainCircuit,
-    githubUrl: 'https://github.com/taran-dev4u/bayesian-biomonitoring-early-warning',
-  },
-  {
-    title: 'PyTorch ML/DL Modeling Lab',
-    role: 'Machine Learning Engineer',
-    status: 'Completed',
-    context: 'Deep learning architecture lab',
-    subject: 'Deep Learning',
-    overview:
-      'Consolidated modeling lab covering preprocessing, neural networks, CNNs, RNNs, LSTMs, autoencoders, transformers, and Vision Transformer experiments.',
-    technologies: ['PyTorch', 'CNN', 'RNN', 'LSTM', 'Autoencoders', 'Transformers', 'ViT'],
-    keyFeatures: [
-      'Organized multiple model families into one coherent deep-learning practice repo.',
-      'Covered both image and sequence modeling patterns across supervised and representation-learning tasks.',
-      'Practiced model setup, training loops, optimization behavior, and architecture comparison.',
-      'Connected coursework experiments to reusable ML engineering habits.',
-    ],
-    outcome:
-      'Strengthened architecture-level intuition across modern deep learning workflows beyond one isolated model.',
-    icon: BrainCircuit,
-    githubUrl: 'https://github.com/taran-dev4u/pytorch-ml-dl-modeling-lab',
-  },
-  {
-    title: 'Movie Reviews Website Database',
-    role: 'Full Stack Developer',
-    status: 'Completed',
-    context: 'VIT DBMS project',
-    overview:
-      'Movie and series review website backed by a MySQL database, XAMPP local server setup, PHP pages, ratings, reviews, movie details, and feedback handling.',
-    technologies: ['PHP', 'MySQL', 'XAMPP', 'HTML', 'CSS', 'SQL', 'Database Design'],
-    keyFeatures: [
-      'Created movie, review, and feedback tables with relationships for a review website.',
-      'Built PHP pages for movies, reviews, movie details, adding reviews, and adding movies.',
-      'Supported movie search, details, user ratings, and feedback collection.',
-      'Practiced full-stack database-backed development with local server tooling.',
-    ],
-    outcome:
-      'Reinforced relational schema design, CRUD flows, and PHP/MySQL application structure.',
+      'Enhanced access to learning materials through a clean, modern web interface.',
     icon: Database,
-    githubUrl: 'https://github.com/taran-dev4u/movie-series-review-dbms',
-  },
-  {
-    title: 'Raspberry Pi Internet Radio Station',
-    role: 'Software Developer',
-    status: 'Completed',
-    context: 'Embedded systems / IoT project',
-    subject: 'Embedded / IoT',
-    overview:
-      'Embedded systems project that configures a Raspberry Pi as an internet radio device with operating-system image setup, Wi-Fi configuration, and streaming audio playback.',
-    technologies: ['Raspberry Pi', 'Linux', 'Pi MusicBox', 'Wi-Fi', 'Audio Streaming', 'SD Card Imaging'],
-    keyFeatures: [
-      'Prepared the Raspberry Pi image and SD-card workflow for the device setup.',
-      'Configured networking so the device could connect and access internet radio streams.',
-      'Documented hardware, software, and playback workflow for repeatable setup.',
-      'Connected embedded configuration, networking, and media playback into one working system.',
-    ],
-    outcome:
-      'Shows practical comfort with hardware-oriented software setup, Linux-style configuration, and networked device workflows.',
-    icon: RadioTower,
-    githubUrl: 'https://github.com/taran-dev4u/raspberry-pi-internet-radio-station',
-  },
-  {
-    title: 'Arduino LPG Leakage Detector With SMS Alert',
-    role: 'Software Developer',
-    status: 'Completed',
-    context: 'Arduino safety-system project',
-    subject: 'Embedded / IoT',
-    overview:
-      'Safety-focused embedded project using Arduino UNO, an MQ-5 gas sensor, buzzer alarm, and SIM900A GSM module to detect LPG leakage and send alerts.',
-    technologies: ['Arduino', 'C++', 'MQ-5 Sensor', 'SIM900A GSM', 'Buzzer', 'Embedded Systems'],
-    keyFeatures: [
-      'Read gas concentration changes from an MQ-5 sensor and triggered an alarm response.',
-      'Used Arduino UNO to coordinate sensor readings, buzzer behavior, and GSM alert flow.',
-      'Designed the workflow for LPG leakage detection with audible and SMS-style notification paths.',
-      'Documented cost and component choices for a practical low-cost safety device.',
-    ],
-    outcome:
-      'Adds a concrete embedded systems example with sensor integration, hardware control, and safety-oriented alerting.',
-    icon: ShieldCheck,
-    githubUrl: 'https://github.com/taran-dev4u/Arduino-LPG-detector',
-  },
-  {
-    title: 'Ireland Hotel Pricing and Ratings Analysis',
-    role: 'Data Engineer',
-    status: 'Completed',
-    context: 'Independent analytics project',
-    overview:
-      'Hotel price and rating analysis for Ireland, focused on cleaning, exploratory analysis, quality signals, review patterns, and visual explanation.',
-    technologies: ['Python', 'Pandas', 'Statistics', 'Visualization', 'Netlify'],
-    keyFeatures: [
-      'Cleaned and shaped hospitality data for analysis.',
-      'Explored price, rating, review, and location behavior.',
-      'Presented findings through a lightweight public-facing site.',
-      'Kept the work readable for both technical and non-technical viewers.',
-    ],
-    outcome:
-      'One of my public-facing analytics projects with a live walkthrough available.',
-    icon: BarChart3,
-    demoUrl: 'https://ireland-hotel-analytics.netlify.app/',
-  },
-  {
-    title: 'ElGamal Digital Signature Scheme',
-    role: 'Security',
-    status: 'Completed',
-    context: 'Undergraduate cryptography project',
-    overview:
-      'Java implementation of ElGamal digital signature generation and verification using modular arithmetic, hashing, key pairs, and BigInteger operations.',
-    technologies: ['Java', 'Cryptography', 'BigInteger', 'Hashing', 'Digital Signatures', 'OOP'],
-    keyFeatures: [
-      'Implemented key-generation, signing, and verification flows.',
-      'Worked with modular arithmetic and secure validation concepts.',
-      'Compared classical and modified signature behavior.',
-      'Practiced careful implementation of security-sensitive logic.',
-    ],
-    outcome:
-      'Reinforced applied cryptography concepts and precision in algorithmic Java code.',
-    icon: ShieldCheck,
-    githubUrl: 'https://github.com/taran-dev4u/elgamal-digital-signature-implementation',
-  },
-  {
-    title: 'Algorithm Practice and LeetCode Learning Archive',
-    role: 'Software Developer',
-    status: 'Completed',
-    context: 'GitHub algorithms and interview-prep repository',
-    subject: 'Algorithms',
-    overview:
-      'Structured algorithm-practice archive covering arrays, strings, dynamic programming, graphs, trees, sliding windows, backtracking, matrices, sorting, and daily problem solving.',
-    technologies: ['Java', 'Python', 'Jupyter Notebook', 'Data Structures', 'Algorithms', 'Problem Solving'],
-    keyFeatures: [
-      'Organized solved problems by topic so practice patterns are easier to revisit before interviews.',
-      'Covered matrix traversal, searching, sorting, hashing, linked lists, trees, graphs, dynamic programming, and two-pointer patterns.',
-      'Included notes and supporting notebook work for computer vision and Python practice.',
-      'Built a reusable preparation archive instead of keeping scattered one-off solutions.',
-    ],
-    outcome:
-      'Strengthened interview readiness and core problem-solving habits across data structures and algorithms.',
-    icon: Cpu,
-    githubUrl: 'https://github.com/taran-dev4u/LeetCode_absolute_Learning',
-  },
-  {
-    title: 'Mobile Application Development Coursework Portfolio',
-    role: 'Software Developer',
-    status: 'Completed',
-    context: 'Undergraduate mobile application development repository',
-    subject: 'Mobile Apps',
-    overview:
-      'Collection of mobile application development labs and mini-project reports documenting app screens, UI behavior, lifecycle concepts, and course-based implementation work.',
-    technologies: ['Android Concepts', 'Java', 'Mobile UI', 'Application Lifecycle', 'Course Reports', 'Documentation'],
-    keyFeatures: [
-      'Collected lab work and mini-project reports from mobile application development coursework.',
-      'Documented app-building exercises, interface behavior, and implementation decisions across multiple assignments.',
-      'Kept course artifacts organized in a single GitHub repository for future reference.',
-      'Shows practical exposure to mobile app workflows alongside web and backend projects.',
-    ],
-    outcome:
-      'Added mobile-development context to my broader software engineering foundation.',
-    icon: Layers3,
-    githubUrl: 'https://github.com/taran-dev4u/App-Dev-Works',
-  },
-  {
-    title: 'Data Analytics Coursework Portfolio',
-    role: 'Data Engineer',
-    status: 'Completed',
-    context: 'Undergraduate analytics and data-analysis repository',
-    subject: 'Analytics',
-    overview:
-      'Organized analytics coursework repository spanning foundational data analytics, advanced data analytics, exploratory analysis, reporting, and Python-based analysis assignments.',
-    technologies: ['Python', 'Data Analytics', 'EDA', 'Visualization', 'Statistics', 'Reporting'],
-    keyFeatures: [
-      'Grouped foundational, data analytics, and advanced analytics lab work into a maintainable repository.',
-      'Captured analysis workflows through reports covering exploratory analysis, visual interpretation, and statistical reasoning.',
-      'Practiced translating raw datasets and assignments into structured findings.',
-      'Complements the larger aviation, Mercedes-Benz, and statistical mining projects with additional analytics practice.',
-    ],
-    outcome:
-      'Built repetition in data-cleaning, analysis, visualization, and report-writing workflows.',
-    icon: BarChart3,
-    githubUrl: 'https://github.com/taran-dev4u/Data-analytics',
-  },
-  {
-    title: 'Password Generator Web Application',
-    role: 'Full Stack Developer',
-    status: 'Completed',
-    context: 'GitHub web development project',
-    subject: 'Web Security',
-    overview:
-      'Browser-based password generator project built with HTML, CSS, JavaScript, and jQuery, including multiple pages, styling, feedback flow, and client-side interaction logic.',
-    technologies: ['HTML', 'CSS', 'JavaScript', 'jQuery', 'Responsive UI', 'Client-Side Logic'],
-    keyFeatures: [
-      'Built a multi-page web interface for generating and presenting password-related utility behavior.',
-      'Used JavaScript and jQuery for client-side interaction and page behavior.',
-      'Included supporting pages such as home, about, and feedback flows.',
-      'Practiced web UI structure, styling, and security-themed utility design.',
-    ],
-    outcome:
-      'Improved frontend implementation practice with a concrete browser-based utility project.',
-    icon: ShieldCheck,
-    githubUrl: 'https://github.com/taran-dev4u/WebDev-Works',
-  },
-  {
-    title: 'Competitive Programming Lab Archive',
-    role: 'Software Developer',
-    status: 'Completed',
-    context: 'Undergraduate competitive programming repository',
-    subject: 'Algorithms',
-    overview:
-      'Competitive programming coursework archive collecting lab reports and problem-solving exercises focused on algorithmic thinking, implementation discipline, and contest-style preparation.',
-    technologies: ['Algorithms', 'Competitive Programming', 'Problem Solving', 'Complexity Analysis', 'Implementation Practice'],
-    keyFeatures: [
-      'Collected multiple competitive-programming lab submissions in one repository.',
-      'Practiced breaking problems into constraints, logic, implementation, and verification steps.',
-      'Supported the same fundamentals used in systems, backend, ML, and data-engineering interviews.',
-      'Provides additional evidence of long-term algorithmic practice beyond one project.',
-    ],
-    outcome:
-      'Strengthened algorithmic reasoning and implementation speed through repeated coursework practice.',
-    icon: Cpu,
-    githubUrl: 'https://github.com/taran-dev4u/CompetitveProgramming',
-  },
-  {
-    title: 'Distributed Rate Limiter & API Gateway',
-    role: 'Software Developer',
-    status: 'Live',
-    context: 'Distributed systems reliability project',
-    overview:
-      'High-throughput API gateway with distributed rate limiting using token-bucket and sliding-window algorithms backed by Redis.',
-    technologies: ['Go', 'Python', 'Redis', 'Docker', 'Kubernetes', 'gRPC', 'Prometheus'],
-    keyFeatures: [
-      'Token-bucket and sliding-window rate limiting.',
-      'Atomic Redis operations for safe concurrent request control.',
-      'Service-level configuration for different traffic policies.',
-      'Metrics dashboard for latency, throughput, and rejected requests.',
-    ],
-    outcome:
-      'Strengthening my backend reliability, distributed systems, and performance engineering practice.',
-    icon: ServerCog,
-  },
-  {
-    title: 'Microservices E-Commerce Platform',
-    role: 'Software Developer',
-    status: 'Live',
-    context: 'Event-driven backend architecture project',
-    overview:
-      'Event-driven commerce system with separated services for users, products, orders, payments, inventory, notifications, analytics, and search.',
-    technologies: ['Java', 'Spring Boot', 'Kafka', 'PostgreSQL', 'Redis', 'Docker', 'AWS ECS'],
-    keyFeatures: [
-      'Event-driven service communication through Kafka.',
-      'API gateway, circuit breakers, and distributed transaction patterns.',
-      'Separate persistence and service boundaries for core domains.',
-      'Deployment structure designed for cloud infrastructure.',
-    ],
-    outcome:
-      'Strengthening my service architecture, integration, and backend system design practice.',
-    icon: Network,
-  },
-  {
-    title: 'Real-Time Streaming Data Pipeline',
-    role: 'Data Engineer',
-    status: 'Live',
-    context: 'Streaming analytics engineering project',
-    overview:
-      'Streaming data pipeline for sensor-style events with Kafka topics, Spark Structured Streaming, windowed aggregates, anomaly detection, and lake storage.',
-    technologies: ['Kafka', 'Spark', 'Python', 'Parquet', 'PostgreSQL', 'Docker'],
-    keyFeatures: [
-      'Topic design for multiple sensor streams.',
-      'Windowed aggregations for near-real-time metrics.',
-      'Anomaly detection layer for unusual events.',
-      'Historical storage in analytics-friendly formats.',
-    ],
-    outcome:
-      'Strengthening my streaming, data quality, analytics, and pipeline reliability practice.',
-    icon: Workflow,
-  },
-  {
-    title: 'Data Lakehouse With Delta Lake',
-    role: 'Data Engineer',
-    status: 'Live',
-    context: 'Modern lakehouse architecture project',
-    overview:
-      'Lakehouse architecture with bronze, silver, and gold layers, ACID table behavior, schema evolution, and BI-ready curated datasets.',
-    technologies: ['Databricks', 'Delta Lake', 'Spark', 'Python', 'Cloud Storage', 'BI'],
-    keyFeatures: [
-      'Medallion architecture for raw, cleaned, and serving layers.',
-      'Schema evolution and versioned data workflows.',
-      'Data quality checks before promoting datasets.',
-      'Analytics-ready tables for dashboards and reporting.',
-    ],
-    outcome:
-      'Strengthening my modern data-platform design and scalable analytics workflow practice.',
-    icon: Database,
-  },
-  {
-    title: 'SaaS Project Management Platform',
-    role: 'Full Stack Developer',
-    status: 'Live',
-    context: 'Multi-tenant product engineering project',
-    overview:
-      'Multi-tenant project management product with RBAC, collaboration workflows, subscription handling, and real-time notifications.',
-    technologies: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Redis', 'Stripe'],
-    keyFeatures: [
-      'Workspace and team management with role-based access.',
-      'Task boards, comments, assignments, and notification events.',
-      'Subscription-aware product boundaries.',
-      'Admin and user-facing flows designed as one cohesive product.',
-    ],
-    outcome:
-      'Strengthening my product thinking, full-stack architecture, and workflow design practice.',
-    icon: Layers3,
-  },
-  {
-    title: 'Real-Time Analytics Dashboard Platform',
-    role: 'Full Stack Developer',
-    status: 'Live',
-    context: 'Real-time product analytics project',
-    overview:
-      'Custom dashboard builder with live data updates, chart composition, query controls, exports, and alert-style monitoring.',
-    technologies: ['React', 'TypeScript', 'WebSockets', 'Node.js', 'Chart.js', 'PostgreSQL'],
-    keyFeatures: [
-      'Reusable chart cards and dashboard layouts.',
-      'Live updates through WebSockets.',
-      'Query and filter controls for users.',
-      'Export and alert flows for business-facing usage.',
-    ],
-    outcome:
-      'Strengthening my UI engineering, real-time systems, analytics, and product polish practice.',
-    icon: BarChart3,
-  },
-  {
-    title: 'End-to-End MLOps Pipeline',
-    role: 'Machine Learning Engineer',
-    status: 'Live',
-    context: 'Production ML lifecycle project',
-    overview:
-      'Production-style ML pipeline with experiment tracking, data versioning, orchestration, model registry, monitoring, and drift detection.',
-    technologies: ['Python', 'MLflow', 'DVC', 'Airflow', 'FastAPI', 'Docker', 'AWS'],
-    keyFeatures: [
-      'Reusable training and evaluation pipeline.',
-      'Experiment tracking and model registry flow.',
-      'Automated retraining trigger design.',
-      'Monitoring plan for model drift and quality metrics.',
-    ],
-    outcome:
-      'Strengthening my ability to connect modeling work with production delivery and operations.',
-    icon: BrainCircuit,
-  },
-  {
-    title: 'Real-Time Fraud Detection System',
-    role: 'Machine Learning Engineer',
-    status: 'Live',
-    context: 'Low-latency risk modeling project',
-    overview:
-      'Low-latency fraud detection service with streaming inference, feature engineering, model explanations, alerting, and monitoring.',
-    technologies: ['Python', 'XGBoost', 'Kafka', 'Redis', 'FastAPI', 'SHAP', 'Docker'],
-    keyFeatures: [
-      'Streaming transaction ingestion and feature lookup.',
-      'XGBoost-style model serving behind an API.',
-      'Explainability layer for flagged transactions.',
-      'Alerting and dashboard plan for operations.',
-    ],
-    outcome:
-      'Strengthening my applied ML, low-latency architecture, and business-risk awareness practice.',
-    icon: ShieldCheck,
-  },
-  {
-    title: 'Enterprise RAG Knowledge System',
-    role: 'AI Engineer',
-    status: 'Live',
-    context: 'Enterprise AI knowledge platform project',
-    overview:
-      'Retrieval-augmented generation system for multi-source knowledge search with citations, reranking, conversation memory, and feedback loops.',
-    technologies: ['Python', 'LangChain', 'OpenAI', 'Vector Database', 'FastAPI', 'PostgreSQL'],
-    keyFeatures: [
-      'Document ingestion, chunking, embeddings, and hybrid retrieval.',
-      'Reranking and citation-aware answer generation.',
-      'Conversation memory with source-grounded responses.',
-      'Feedback loop for quality improvement.',
-    ],
-    outcome:
-      'Strengthening my practical AI product architecture and trustworthy answer-generation practice.',
-    icon: BrainCircuit,
-  },
-  {
-    title: 'Multi-Agent AI Research System',
-    role: 'AI Engineer',
-    status: 'Live',
-    context: 'Agentic AI research workflow project',
-    overview:
-      'Multi-agent research workflow with specialized agents for search, extraction, analysis, validation, and report drafting.',
-    technologies: ['Python', 'LangGraph', 'OpenAI', 'Tool Calling', 'Vector Search', 'FastAPI'],
-    keyFeatures: [
-      'Agent roles for planning, retrieval, synthesis, and quality checks.',
-      'Tool integration for search, data analysis, and document review.',
-      'Memory structure for multi-step research tasks.',
-      'Validation pass before presenting final findings.',
-    ],
-    outcome:
-      'Strengthening my AI orchestration, tool-use, and careful automation practice.',
-    icon: Network,
+    githubUrl: 'https://github.com/varan0209/ByteXL_InfoHub_Varan',
   },
 ];
 
